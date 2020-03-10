@@ -6,7 +6,7 @@ Containers and orchestrators support cloud native deployments of distributed sys
 
 ![](en/media/image2.png)
 
-*Figure 2‑1 Monolithic versus Microservice [\[1\]](en/5_References/#5-references)*
+*Figure 2‑1 Monolithic versus Microservice [\[1\]](en/5_References.md)*
 
 -   **Microservices** are applications written as blocks of code and interconnected via API's. Based on architectural principles such as [Domain Driven Design (DDD)](https://www.thoughtworks.com/insights/blog/domain-driven-design-services-architecture), [12-factor Apps](https://12factor.net/) and Cloud Native Architecture (Infrastructure as code) microservice applications most often use containers, orchestrators and, more recently, functions as a service (serverless).
 -   **Containers** are portable environments containing application code, associated libraries and dependencies. Developers use build pipelines to create and deploy containerized applications, test and QA in development environments and ship as services to production using package managers and orchestration tools, such as Kubernetes (both managed and hosted). The primary goal of a container is to provide a standardized set of virtual resources to an application process that are separated from the virtual resources provided to other containers deployed on the same platform. The virtual resources are provided based on container configuration information. Virtual resources can also be shared by groups of containers. This allows a container to be deployed and run on any compatible platform regardless of the underlying operating system.
@@ -16,7 +16,7 @@ Containers and orchestrators support cloud native deployments of distributed sys
 
 ![Virtual Machines, Containers, Serverless Architecture](./media/image3.jpeg)
 
-*Figure 2‑2 [High-level overview of VM's, containers, and serverless](https://www.cloudops.com/2018/02/serverless-computing-hot-or-not-2/) [\[3\]](#5-references)*
+*Figure 2‑2 [High-level overview of VM's, containers, and serverless](https://www.cloudops.com/2018/02/serverless-computing-hot-or-not-2/) [\[3\]](en/5_References.md)*
 
 Figure 2‑3 below depicts the shared responsibility model and concept of managed and hosted cloud services as it relates to containers. This includes:
 
@@ -33,7 +33,7 @@ Constrainers, kubernetes and (despite the name) serverless, all run on virtual m
 
 ## 2.3 Containers
 
-One of the trends outlined in the in the *Enterprise Security Architecture Description Document Annex E -- Application Security (APP)* [\[4\]](#5-references) and the *Enterprise Security Architecture Description Document Annex F -- Compute and Storage Services Security (CSS)* [\[5\]](#5-references) is the use of containers.
+One of the trends outlined in the in the *Enterprise Security Architecture Description Document Annex E -- Application Security (APP)* [\[4\]](en/5_References.md) and the *Enterprise Security Architecture Description Document Annex F -- Compute and Storage Services Security (CSS)* [\[5\]](en/5_References.md) is the use of containers.
 
 The introduction of cloud services and the adoption of "continuous deployment" of software services has resulted in the movement of applications from one environment to another (Data Centre \<-\> Public Cloud) and within an environment was required to be agile and predictable. Container technology (OS virtualization) enables software to deploy quickly and run predictably when moved from one environment to another.
 
@@ -84,7 +84,7 @@ The decomposition of applications into discrete services began with Service Orie
 
 The emerging architectural concept to meet this need is the concept of "microservices" [\[8\]](#5-references). A system based on the Microservices Architecture (MSA) pattern should be comprised of a set of microservices, each of which has a single responsibility that it should perform it really well. Not all microservices are necessarily small---trying to decompose a service in which the code is both tightly coupled and highly cohesive will do more harm than good---but they each should have a well-defined purpose. To ensure that microservices are as loosely coupled as possible, microservices should not share files or databases -- all sharing of information is via network interfaces. For example, a single microservice may be responsible for a database and receives requests to create, read, update, or delete ("CRUD") data in the database via service requests over the network.
 
-The traditional concept of an "application" may no longer be applicable in an enterprise environment; instead, microservices may be mixed and matched as needed to meet an organization's specific operational and business requirements. A high-level view of the microservice architecture is shown in Figure ‎2‑5 [\[4\]](#5-references).
+The traditional concept of an "application" may no longer be applicable in an enterprise environment; instead, microservices may be mixed and matched as needed to meet an organization's specific operational and business requirements. A high-level view of the microservice architecture is shown in Figure ‎2‑5 [\[4\]](en/5_References.md).
 
 ![](./media/image6.png)
 
