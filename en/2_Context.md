@@ -14,7 +14,7 @@ Containers and orchestrators support cloud native deployments of distributed sys
 -   **Kubernetes** is an open source container cluster orchestrator that automates the deployment, scaling and management of containerized applications.
 -   **Unit of Deployment**: Cloud native applications are often based on a unit of deployment, usually a container, a collection of containers in a kubernetes pod, or an event-driven function. Units of deployment are most often used as a security boundary when implementing policy. Cloud-native applications are generally distributed, elastic and horizontally scalable systems composed of microservices that isolate state in a minimum of stateful components [\[2\]](5_References.md).
 
-![Virtual Machines, Containers, Serverless Architecture](media/image3.jpeg)
+![Virtual Machines, Containers, Serverless Architecture](../media/image3.jpeg)
 
 *Figure 2‑2 [High-level overview of VM's, containers, and serverless](https://www.cloudops.com/2018/02/serverless-computing-hot-or-not-2/) [\[3\]](5_References.md)*
 
@@ -23,7 +23,7 @@ Figure 2‑3 below depicts the shared responsibility model and concept of manage
 -   **Managed** implies the control plane of a service is managed by a third party while the data plane is managed by the GC (a managed service such as Azure Kubernetes Service)
 -   **Hosted** means both the control and data planes are managed by the GC, regardless who manage the infrastructure underneath. For example, deploying Kubernetes on EC2 or on-premise compute.
 
-![](./media/image4.png)
+![](../media/image4.png)
 
 *Figure 2‑3 Shared Responsibility Model with Containers*
 
@@ -37,7 +37,7 @@ One of the trends outlined in the in the *Enterprise Security Architecture Descr
 
 The introduction of cloud services and the adoption of "continuous deployment" of software services has resulted in the movement of applications from one environment to another (Data Centre \<-\> Public Cloud) and within an environment was required to be agile and predictable. Container technology (OS virtualization) enables software to deploy quickly and run predictably when moved from one environment to another.
 
-![](./media/image5.jpeg)
+![](../media/image5.jpeg)
 
 *Figure 2‑4 Container Technologies*
 
@@ -86,7 +86,7 @@ The emerging architectural concept to meet this need is the concept of "microser
 
 The traditional concept of an "application" may no longer be applicable in an enterprise environment; instead, microservices may be mixed and matched as needed to meet an organization's specific operational and business requirements. A high-level view of the microservice architecture is shown in Figure ‎2‑5 [\[4\]](5_References.md).
 
-![](./media/image6.png)
+![](../media/image6.png)
 
 *Figure ‎2‑5 Microservices Architecture (MSA)*
 
@@ -194,7 +194,7 @@ Microservices introduce new components, workflow and process into a team, and or
 
 A recent example with Istio deployed as a 'sidecar' in Kubernetes, supporting policy based networking.
 
-![BookInfo-v1-Istio (5).png](./media/image7.png)
+![BookInfo-v1-Istio (5).png](../media/image7.png)
 
 *Figure ‎2‑6 Example service mesh (CNCF Project Istio) [\[12\]](5_References.md)*
 
