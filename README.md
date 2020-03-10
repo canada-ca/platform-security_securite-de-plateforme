@@ -11,27 +11,27 @@ This guidance provides recommendations to secure containers and microservices wh
 
 ## Table of Contents
 
--   [1. Introduction](EN/1_introduction.md)
-    -   [1.1 Background](EN/1_introduction.md/#11-background)
-    -   [1.2 Document Purpose and Scope](EN/1_introduction.md/#12-document-purpose-and-scope)
-    -   [1.3 Audience](EN/1_introduction.md/#13-audience)
-    -   [1.4 Document Overview](EN/1_introduction.md/#14-document-overview)
--   [2. Context](EN/2_context.md/#2-context)
-    -   [2.1 Definitions](EN/2_context.md/#21-definitions)
-    -   [2.2 Infrastructure](EN/2_context.md/#22-infrastructure)
-    -   [2.3 Containers](EN/2_context.md/#23-containers)
-    -   [2.4 Container Security](EN/2_context.md/#24-container-security)
-    -   [2.5 Microservices](EN/2_context.md/#25-microservices)
-        -   [2.5.1 The Ten Commandments of Microservices](EN/2_context.md/#251-the-ten-commandments-of-microservices)
-        -   [2.5.2 Service Mesh](EN/2_context.md/#252-service-mesh)
-    -   [2.6 Functions as a Service ](EN/2_context.md/#26-functions-as-a-service)
--   [3. Threat Environment](EN/3_threat-environment.md)
--   [4. Implementation Recommendations](EN/4_implementation-recommendations.md)
-    -   [4.1 Host Recommendations ](EN/4_implementation-recommendations.md/#41-host-recommendations)
-    -   [4.2 Image Builds](EN/4_implementation-recommendations.md/#42-image-builds)
-    -   [4.3 Container Security Brokers](EN/4_implementation-recommendations.md/#43-container-security-brokers)
-    -   [4.4 Orchestration - Kubernetes](EN/4_implementation-recommendations.md/#44-orchestration---kubernetes)
--   [5. References](EN/5_references.md)
+-   [1. Introduction](en/1_introduction.md)
+    -   [1.1 Background](en/1_introduction.md/#11-background)
+    -   [1.2 Document Purpose and Scope](en/1_introduction.md/#12-document-purpose-and-scope)
+    -   [1.3 Audience](en/1_introduction.md/#13-audience)
+    -   [1.4 Document Overview](en/1_introduction.md/#14-document-overview)
+-   [2. Context](en/2_context.md/#2-context)
+    -   [2.1 Definitions](en/2_context.md/#21-definitions)
+    -   [2.2 Infrastructure](en/2_context.md/#22-infrastructure)
+    -   [2.3 Containers](en/2_context.md/#23-containers)
+    -   [2.4 Container Security](en/2_context.md/#24-container-security)
+    -   [2.5 Microservices](en/2_context.md/#25-microservices)
+        -   [2.5.1 The Ten Commandments of Microservices](en/2_context.md/#251-the-ten-commandments-of-microservices)
+        -   [2.5.2 Service Mesh](en/2_context.md/#252-service-mesh)
+    -   [2.6 Functions as a Service ](en/2_context.md/#26-functions-as-a-service)
+-   [3. Threat Environment](en/3_threat-environment.md)
+-   [4. Implementation Recommendations](en/4_implementation-recommendations.md)
+    -   [4.1 Host Recommendations ](en/4_implementation-recommendations.md/#41-host-recommendations)
+    -   [4.2 Image Builds](en/4_implementation-recommendations.md/#42-image-builds)
+    -   [4.3 Container Security Brokers](en/4_implementation-recommendations.md/#43-container-security-brokers)
+    -   [4.4 Orchestration - Kubernetes](en/4_implementation-recommendations.md/#44-orchestration---kubernetes)
+-   [5. References](en/5_references.md)
 
 ## List of Tables
 
@@ -39,12 +39,12 @@ This guidance provides recommendations to secure containers and microservices wh
 
 ## List of Figures
 
--   [Figure 2‑1 Monolithic versus Microservice \[1\]](EN/2_context.md/#21-definitions)
--   [Figure 2‑2 High-level overview of VM's, containers, and serverless \[3\]](EN/2_context.md/#21-definitions)
--   [Figure 2‑3 Shared Responsibility Model with Containers](EN/2_context.md/#21-definitions)
--   [Figure 2‑4 Container Technologies](EN/2_context.md/#23-containers)
--   [Figure ‎2‑5 Microservices Architecture (MSA)](EN/2_context.md/#25-microservices)
--   [Figure ‎2‑6 Example service mesh (CNCF Project Istio) \[12\]](EN/2_context.md/#252-service-mesh)
+-   [Figure 2‑1 Monolithic versus Microservice \[1\]](en/2_context.md/#21-definitions)
+-   [Figure 2‑2 High-level overview of VM's, containers, and serverless \[3\]](en/2_context.md/#21-definitions)
+-   [Figure 2‑3 Shared Responsibility Model with Containers](en/2_context.md/#21-definitions)
+-   [Figure 2‑4 Container Technologies](en/2_context.md/#23-containers)
+-   [Figure ‎2‑5 Microservices Architecture (MSA)](en/2_context.md/#25-microservices)
+-   [Figure ‎2‑6 Example service mesh (CNCF Project Istio) \[12\]](en/2_context.md/#252-service-mesh)
 
 ## List of Abbreviations and Acronyms
 
