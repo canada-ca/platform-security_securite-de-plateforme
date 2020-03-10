@@ -4,7 +4,7 @@
 
 Containers and orchestrators support cloud native deployments of distributed systems, often based on microservice architecture as depicted in Figure 2-1.
 
-(media/image2.png)
+[![](media/images2.png)]
 
 *Figure 2‑1 Monolithic versus Microservice [\[1\]](en/5_References/#5-references)*
 
