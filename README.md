@@ -8,6 +8,75 @@ With the introduction of cloud services and the adoption of “continuous deploy
 
 This guidance provides recommendations to secure containers and microservices when deploying Government of Canada (GC) services. It highlights the controls, configuration and tools to secure GC workloads running in containers and orchestrators and recommendations for compliance verification.
 
+
+## Table of Contents
+
+-   [1. Introduction](#1-introduction)
+    -   [1.1 Background](#11-background)
+    -   [1.2 Document Purpose and Scope](#12-document-purpose-and-scope)
+    -   [1.3 Audience](#13-audience)
+    -   [1.4 Document Overview](#14-document-overview)
+-   [2. Context](#2-context)
+    -   [2.1 Definitions](#21-definitions)
+    -   [2.2 Infrastructure](#22-infrastructure)
+    -   [2.3 Containers](#23-containers)
+    -   [2.4 Container Security](#24-container-security)
+    -   [2.5 Microservices](#25-microservices)
+        -   [2.5.1 The Ten Commandments of Microservices](#251-the-ten-commandments-of-microservices)
+        -   [2.5.2 Service Mesh](#252-service-mesh)
+    -   [2.6 Functions as a Service ](#26-functions-as-a-service)
+-   [3. Threat Environment](#3-threat-environment)
+-   [4. Implementation Recommendations](#4-implementation-recommendations)
+    -   [4.1 Host Recommendations ](#41-host-recommendations)
+    -   [4.2 Image Builds](#42-image-builds)
+    -   [4.3 Container Security Brokers](#43-container-security-brokers)
+    -   [4.4 Orchestration - Kubernetes](#44-orchestration---kubernetes)
+-   [5. References](#5-references)
+
+## List of Tables
+
+-   [Table 2‑1 Virtualization and Container Quality Attributes](#23-containers)
+
+## List of Figures
+
+-   [Figure 2‑1 Monolithic versus Microservice \[1\]](#21-definitions)
+-   [Figure 2‑2 High-level overview of VM's, containers, and serverless \[3\]](#21-definitions)
+-   [Figure 2‑3 Shared Responsibility Model with Containers](#21-definitions)
+-   [Figure 2‑4 Container Technologies](#23-containers)
+-   [Figure ‎2‑5 Microservices Architecture (MSA)](#25-microservices)
+-   [Figure ‎2‑6 Example service mesh (CNCF Project Istio) \[12\]](#252-service-mesh)
+
+## List of Abbreviations and Acronyms
+
+| Abbreviation | Definition |
+| --------- | ---------------------------------------------------- |
+| CIRT      | Computer Incident Response Team |
+| CONOPS    | Concept of Operations |
+| CSE       | Communications Security Establishment |
+| CS EMP    | Cyber Security Event Management Plan |
+| CSP       | Cloud Service Provider |
+| FedRAMP   | Federal Risk and Authorization Management Program |
+| GC        | Government of Canada |
+| GSRM      | Government of Canada Strategic Reference Model |
+| IaaS      | Infrastructure as a Service |
+| IPC       | Information Protection Centre |
+| IT        | Information Technology |
+| ITSG      | Information Technology Security Guidance |
+| LAN       | Local Area Network |
+| NIST      | National Institute of Standard and Technology |
+| PAA       | Program Alignment Architecture |
+| PaaS      | Platform as a Service |
+| PBMM      | Protected B, Medium Integrity, Medium Availability |
+| PIA       | Privacy Impact Assessment |
+| PoAM      | Plan of Actions and Milestones |
+| RACI      | Responsible, Accountable, Consulted, Informed |
+| SaaS      | Software as a Service |
+| SDLC      | System Development Lifecycle |
+| SLA       | Service Level Agreement |
+| SSC       | Shared Services Canada |
+| TBS       | Treasury Board of Canada Secretariat |
+| ULL       | Unclassified, Low Integrity, Low Availability |
+
 ### How to Contribute
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)
