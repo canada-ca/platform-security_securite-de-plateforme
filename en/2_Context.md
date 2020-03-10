@@ -4,7 +4,7 @@
 
 Containers and orchestrators support cloud native deployments of distributed systems, often based on microservice architecture as depicted in Figure 2-1.
 
-![](en/media/image2.png)
+![](media/image2.png)
 
 *Figure 2‑1 Monolithic versus Microservice [\[1\]](5_References.md)*
 
@@ -12,11 +12,11 @@ Containers and orchestrators support cloud native deployments of distributed sys
 -   **Containers** are portable environments containing application code, associated libraries and dependencies. Developers use build pipelines to create and deploy containerized applications, test and QA in development environments and ship as services to production using package managers and orchestration tools, such as Kubernetes (both managed and hosted). The primary goal of a container is to provide a standardized set of virtual resources to an application process that are separated from the virtual resources provided to other containers deployed on the same platform. The virtual resources are provided based on container configuration information. Virtual resources can also be shared by groups of containers. This allows a container to be deployed and run on any compatible platform regardless of the underlying operating system.
 -   **Serverless**, Functions as a service (FaaS) and event-driven architecture all initially referred to a microservice that is run on a CSP compute engine only when invoked, without any consideration for infrastructure (an allocation of machine resources and run duration dependant on invocation policy). Recently, serverless is also being used to describe a managed container service (CaaS), where the user is not responsible for the host environment where their container runs.
 -   **Kubernetes** is an open source container cluster orchestrator that automates the deployment, scaling and management of containerized applications.
--   **Unit of Deployment**: Cloud native applications are often based on a unit of deployment, usually a container, a collection of containers in a kubernetes pod, or an event-driven function. Units of deployment are most often used as a security boundary when implementing policy. Cloud-native applications are generally distributed, elastic and horizontally scalable systems composed of microservices that isolate state in a minimum of stateful components [\[2\]](#5-references).
+-   **Unit of Deployment**: Cloud native applications are often based on a unit of deployment, usually a container, a collection of containers in a kubernetes pod, or an event-driven function. Units of deployment are most often used as a security boundary when implementing policy. Cloud-native applications are generally distributed, elastic and horizontally scalable systems composed of microservices that isolate state in a minimum of stateful components [\[2\]](5_References.md).
 
-![Virtual Machines, Containers, Serverless Architecture](./media/image3.jpeg)
+![Virtual Machines, Containers, Serverless Architecture](media/image3.jpeg)
 
-*Figure 2‑2 [High-level overview of VM's, containers, and serverless](https://www.cloudops.com/2018/02/serverless-computing-hot-or-not-2/) [\[3\]](en/5_References.md)*
+*Figure 2‑2 [High-level overview of VM's, containers, and serverless](https://www.cloudops.com/2018/02/serverless-computing-hot-or-not-2/) [\[3\]](5_References.md)*
 
 Figure 2‑3 below depicts the shared responsibility model and concept of managed and hosted cloud services as it relates to containers. This includes:
 
@@ -33,7 +33,7 @@ Constrainers, kubernetes and (despite the name) serverless, all run on virtual m
 
 ## 2.3 Containers
 
-One of the trends outlined in the in the *Enterprise Security Architecture Description Document Annex E -- Application Security (APP)* [\[4\]](en/5_References.md) and the *Enterprise Security Architecture Description Document Annex F -- Compute and Storage Services Security (CSS)* [\[5\]](en/5_References.md) is the use of containers.
+One of the trends outlined in the in the *Enterprise Security Architecture Description Document Annex E -- Application Security (APP)* [\[4\]](en/5_References.md) and the *Enterprise Security Architecture Description Document Annex F -- Compute and Storage Services Security (CSS)* [\[5\]](5_References.md) is the use of containers.
 
 The introduction of cloud services and the adoption of "continuous deployment" of software services has resulted in the movement of applications from one environment to another (Data Centre \<-\> Public Cloud) and within an environment was required to be agile and predictable. Container technology (OS virtualization) enables software to deploy quickly and run predictably when moved from one environment to another.
 
@@ -84,13 +84,13 @@ The decomposition of applications into discrete services began with Service Orie
 
 The emerging architectural concept to meet this need is the concept of "microservices" [\[8\]](#5-references). A system based on the Microservices Architecture (MSA) pattern should be comprised of a set of microservices, each of which has a single responsibility that it should perform it really well. Not all microservices are necessarily small---trying to decompose a service in which the code is both tightly coupled and highly cohesive will do more harm than good---but they each should have a well-defined purpose. To ensure that microservices are as loosely coupled as possible, microservices should not share files or databases -- all sharing of information is via network interfaces. For example, a single microservice may be responsible for a database and receives requests to create, read, update, or delete ("CRUD") data in the database via service requests over the network.
 
-The traditional concept of an "application" may no longer be applicable in an enterprise environment; instead, microservices may be mixed and matched as needed to meet an organization's specific operational and business requirements. A high-level view of the microservice architecture is shown in Figure ‎2‑5 [\[4\]](en/5_References.md).
+The traditional concept of an "application" may no longer be applicable in an enterprise environment; instead, microservices may be mixed and matched as needed to meet an organization's specific operational and business requirements. A high-level view of the microservice architecture is shown in Figure ‎2‑5 [\[4\]](5_References.md).
 
 ![](./media/image6.png)
 
 *Figure ‎2‑5 Microservices Architecture (MSA)*
 
-With orchestration, a single orchestrator [^2] "conducts" the microservices, telling them what to do and when. Each microservice responds to requests in a synchronous manner and has no knowledge of the larger business process in which it is participating. With choreography, microservices are aware of the business processes of which they are a part. In an event-driven choreography scheme [\[9\]](#5-references), when a microservice completes a step in a business process, it posts an asynchronous event. At that point, the next microservice in the business process detects the event, performs its step, and posts another event. Both orchestration and choreography allow steps to be performed in parallel. A decentralized asynchronous approach generally provides looser coupling (which better supports small independent DevOps teams) but has poor or no support for transactions. If a transaction cannot be completed for any reason, the microservices must coordinate with each other to identify and resolve any inconsistencies rather than relying on a centralized, synchronous orchestrator to implement a two-phase commit (2PC) protocol [\[10\]](#5-references). The end user may also be actively involved in ensuring the consistency and integrity of all services and their associated databases. In practice, an MSA-based system is likely use a combination of choreography and orchestration with one or more microservices performing orchestration functions (i.e., there is no dedicated orchestrator typically present in a traditional SOA).
+With orchestration, a single orchestrator [^2] "conducts" the microservices, telling them what to do and when. Each microservice responds to requests in a synchronous manner and has no knowledge of the larger business process in which it is participating. With choreography, microservices are aware of the business processes of which they are a part. In an event-driven choreography scheme [\[9\]](#5-references), when a microservice completes a step in a business process, it posts an asynchronous event. At that point, the next microservice in the business process detects the event, performs its step, and posts another event. Both orchestration and choreography allow steps to be performed in parallel. A decentralized asynchronous approach generally provides looser coupling (which better supports small independent DevOps teams) but has poor or no support for transactions. If a transaction cannot be completed for any reason, the microservices must coordinate with each other to identify and resolve any inconsistencies rather than relying on a centralized, synchronous orchestrator to implement a two-phase commit (2PC) protocol [\[10\]](5_References.md). The end user may also be actively involved in ensuring the consistency and integrity of all services and their associated databases. In practice, an MSA-based system is likely use a combination of choreography and orchestration with one or more microservices performing orchestration functions (i.e., there is no dedicated orchestrator typically present in a traditional SOA).
 
 As a relatively new concept, there is no single formal definition of a microservice, but industry consensus is that microservices should be stateless and not share access to persistent data stores. Any required state information is exchanged over the network via APIs, and any access to a shared data store should also be via an API call to the microservice responsible for the data stored.
 
@@ -196,7 +196,7 @@ A recent example with Istio deployed as a 'sidecar' in Kubernetes, supporting po
 
 ![BookInfo-v1-Istio (5).png](./media/image7.png)
 
-*Figure ‎2‑6 Example service mesh (CNCF Project Istio) [\[12\]](#5-references)*
+*Figure ‎2‑6 Example service mesh (CNCF Project Istio) [\[12\]](5_References.md)*
 
 Functions of a service mesh:
 
