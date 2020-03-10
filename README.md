@@ -11,7 +11,7 @@ This guidance provides recommendations to secure containers and microservices wh
 
 ## Table of Contents
 
--   [1. Introduction](en/1_introduction.md)
+-   [1. Introduction](en/1_Introduction.md)
     -   [1.1 Background](en/1_introduction.md/#11-background)
     -   [1.2 Document Purpose and Scope](en/1_introduction.md/#12-document-purpose-and-scope)
     -   [1.3 Audience](en/1_introduction.md/#13-audience)
