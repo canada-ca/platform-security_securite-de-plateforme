@@ -2,7 +2,7 @@
 
 ([Français](#gabarit-pour-dépôts-de-code-source-ouvert-du-gouvernement-du-canada))
 
-## Guidance on Securing Containers and Microservices
+## Guidance on Secure Containers and Microservices
 
 With the introduction of cloud services and the adoption of “continuous deployment” of software services, the movement of applications from one environment to another and within an environment is required to be agile and predictable. Container technology (OS virtualization) enables software to deploy quickly and run predictably when moved from one environment to another. Further, microservices are established when a set of containers work together to compose an application. While this approach improves flexibility and scalability for application development and simplifies functionality, it adds another layer of abstraction that must be secured.
 
