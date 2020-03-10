@@ -28,7 +28,7 @@ This guidance provides recommendations to secure containers and microservices wh
 -   [3. Threat Environment](en/3_Threat-Environment.md)
 -   [4. Implementation Recommendations](en/4_Implementation-Recommendations.md)
     -   [4.1 Host Recommendations ](en/4_Implementation-Recommendations.md/#41-host-recommendations)
-    -   [4.2 Image Builds](en/4_Implementation-Recommendationsmd/#42-image-builds)
+    -   [4.2 Image Builds](en/4_Implementation-Recommendations.md/#42-image-builds)
     -   [4.3 Container Security Brokers](en/4_Implementation-Recommendations.md/#43-container-security-brokers)
     -   [4.4 Orchestration - Kubernetes](en/4_Implementation-Recommendations.md/#44-orchestration---kubernetes)
 -   [5. References](en/5_References.md)
