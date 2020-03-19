@@ -4,8 +4,7 @@
 
 Containers and orchestrators support cloud native deployments of distributed systems, often based on microservice architecture as depicted in Figure 2-1.
 
-![](../media/image2.png)
-
+![Figure 2-1](../media/image2.png)
 *Figure 2‑1 Monolithic versus Microservice [\[1\]](5_References.md)*
 
 - **Microservices** are applications written as blocks of code and interconnected via API's. Based on architectural principles such as [Domain Driven Design (DDD)](https://www.thoughtworks.com/insights/blog/domain-driven-design-services-architecture), [12-factor Apps](https://12factor.net/) and Cloud Native Architecture (Infrastructure as code) microservice applications most often use containers, orchestrators and, more recently, functions as a service (serverless).
@@ -23,8 +22,7 @@ Figure 2‑3 below depicts the shared responsibility model and concept of manage
 - **Managed** implies the control plane of a service is managed by a third party while the data plane is managed by the GC (a managed service such as Azure Kubernetes Service)
 - **Hosted** means both the control and data planes are managed by the GC, regardless who manage the infrastructure underneath. For example, deploying Kubernetes on EC2 or on-premise compute.
 
-![](../media/image4.png)
-
+![Figure 2-3](../media/image4.png)
 *Figure 2‑3 Shared Responsibility Model with Containers*
 
 ## 2.2 Infrastructure
@@ -37,8 +35,7 @@ One of the trends outlined in the in the *Enterprise Security Architecture Descr
 
 The introduction of cloud services and the adoption of "continuous deployment" of software services has resulted in the movement of applications from one environment to another (Data Centre \<-\> Public Cloud) and within an environment was required to be agile and predictable. Container technology (OS virtualization) enables software to deploy quickly and run predictably when moved from one environment to another.
 
-![](../media/image5.jpeg)
-
+![Figure 2-4](../media/image5.jpeg)
 *Figure 2‑4 Container Technologies*
 
 As depicted in Figure 2‑4 containers sit on top of a physical or virtualized server and its OS. Each container shares the host OS kernel and the OS binaries and libraries. Shared components are read-only, with each container able to be written to through a unique mount. This makes containers exceptionally "light" -- containers can be megabytes in size and take just seconds to start, versus minutes for a VM. Table 2‑1 provides a list of quality attributes associated with virtualization and container technologies in a modern data center environment.
@@ -86,8 +83,7 @@ The emerging architectural concept to meet this need is the concept of "microser
 
 The traditional concept of an "application" may no longer be applicable in an enterprise environment; instead, microservices may be mixed and matched as needed to meet an organization's specific operational and business requirements. A high-level view of the microservice architecture is shown in Figure ‎2‑5 [\[4\]](5_References.md).
 
-![](../media/image6.png)
-
+![Figure 2-5](../media/image6.png)
 *Figure ‎2‑5 Microservices Architecture (MSA)*
 
 With orchestration, a single orchestrator [^2] "conducts" the microservices, telling them what to do and when. Each microservice responds to requests in a synchronous manner and has no knowledge of the larger business process in which it is participating. With choreography, microservices are aware of the business processes of which they are a part. In an event-driven choreography scheme [\[9\]](5_References.md), when a microservice completes a step in a business process, it posts an asynchronous event. At that point, the next microservice in the business process detects the event, performs its step, and posts another event. Both orchestration and choreography allow steps to be performed in parallel. A decentralized asynchronous approach generally provides looser coupling (which better supports small independent DevOps teams) but has poor or no support for transactions. If a transaction cannot be completed for any reason, the microservices must coordinate with each other to identify and resolve any inconsistencies rather than relying on a centralized, synchronous orchestrator to implement a two-phase commit (2PC) protocol [\[10\]](5_References.md). The end user may also be actively involved in ensuring the consistency and integrity of all services and their associated databases. In practice, an MSA-based system is likely use a combination of choreography and orchestration with one or more microservices performing orchestration functions (i.e., there is no dedicated orchestrator typically present in a traditional SOA).
