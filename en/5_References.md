@@ -24,7 +24,7 @@
 
 \[11\] The New Stack, \"The Ten Commandments of Microservices,\" \[Online\]. Available: http://thenewstack.io/ten-commandments-microservices/. \[Accessed 16 Nov 2016\].
 
-\[12\] Kubernetes, \"Managing microservices with the Istio service mes,\" \[Online\]. Available: https://kubernetes.io/blog/2017/05/managing-microservices-with-istio-service-mesh/ 
+\[12\] Kubernetes, \"Managing microservices with the Istio service mes,\" \[Online\]. Available: https://kubernetes.io/blog/2017/05/managing-microservices-with-istio-service-mesh/
 
 \[13\] Neuvector, \"The Ultimate Guide to Kubernetes Security,\" \[Online\]. Available: https://neuvector.com/ultimate-kubernetes-security-guide/ .
 

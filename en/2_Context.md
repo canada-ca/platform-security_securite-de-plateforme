@@ -8,11 +8,11 @@ Containers and orchestrators support cloud native deployments of distributed sys
 
 *Figure 2‑1 Monolithic versus Microservice [\[1\]](5_References.md)*
 
--   **Microservices** are applications written as blocks of code and interconnected via API's. Based on architectural principles such as [Domain Driven Design (DDD)](https://www.thoughtworks.com/insights/blog/domain-driven-design-services-architecture), [12-factor Apps](https://12factor.net/) and Cloud Native Architecture (Infrastructure as code) microservice applications most often use containers, orchestrators and, more recently, functions as a service (serverless).
--   **Containers** are portable environments containing application code, associated libraries and dependencies. Developers use build pipelines to create and deploy containerized applications, test and QA in development environments and ship as services to production using package managers and orchestration tools, such as Kubernetes (both managed and hosted). The primary goal of a container is to provide a standardized set of virtual resources to an application process that are separated from the virtual resources provided to other containers deployed on the same platform. The virtual resources are provided based on container configuration information. Virtual resources can also be shared by groups of containers. This allows a container to be deployed and run on any compatible platform regardless of the underlying operating system.
--   **Serverless**, Functions as a service (FaaS) and event-driven architecture all initially referred to a microservice that is run on a CSP compute engine only when invoked, without any consideration for infrastructure (an allocation of machine resources and run duration dependant on invocation policy). Recently, serverless is also being used to describe a managed container service (CaaS), where the user is not responsible for the host environment where their container runs.
--   **Kubernetes** is an open source container cluster orchestrator that automates the deployment, scaling and management of containerized applications.
--   **Unit of Deployment**: Cloud native applications are often based on a unit of deployment, usually a container, a collection of containers in a kubernetes pod, or an event-driven function. Units of deployment are most often used as a security boundary when implementing policy. Cloud-native applications are generally distributed, elastic and horizontally scalable systems composed of microservices that isolate state in a minimum of stateful components [\[2\]](5_References.md).
+- **Microservices** are applications written as blocks of code and interconnected via API's. Based on architectural principles such as [Domain Driven Design (DDD)](https://www.thoughtworks.com/insights/blog/domain-driven-design-services-architecture), [12-factor Apps](https://12factor.net/) and Cloud Native Architecture (Infrastructure as code) microservice applications most often use containers, orchestrators and, more recently, functions as a service (serverless).
+- **Containers** are portable environments containing application code, associated libraries and dependencies. Developers use build pipelines to create and deploy containerized applications, test and QA in development environments and ship as services to production using package managers and orchestration tools, such as Kubernetes (both managed and hosted). The primary goal of a container is to provide a standardized set of virtual resources to an application process that are separated from the virtual resources provided to other containers deployed on the same platform. The virtual resources are provided based on container configuration information. Virtual resources can also be shared by groups of containers. This allows a container to be deployed and run on any compatible platform regardless of the underlying operating system.
+- **Serverless**, Functions as a service (FaaS) and event-driven architecture all initially referred to a microservice that is run on a CSP compute engine only when invoked, without any consideration for infrastructure (an allocation of machine resources and run duration dependant on invocation policy). Recently, serverless is also being used to describe a managed container service (CaaS), where the user is not responsible for the host environment where their container runs.
+- **Kubernetes** is an open source container cluster orchestrator that automates the deployment, scaling and management of containerized applications.
+- **Unit of Deployment**: Cloud native applications are often based on a unit of deployment, usually a container, a collection of containers in a kubernetes pod, or an event-driven function. Units of deployment are most often used as a security boundary when implementing policy. Cloud-native applications are generally distributed, elastic and horizontally scalable systems composed of microservices that isolate state in a minimum of stateful components [\[2\]](5_References.md).
 
 ![Virtual Machines, Containers, Serverless Architecture](../media/image3.jpeg)
 
@@ -20,8 +20,8 @@ Containers and orchestrators support cloud native deployments of distributed sys
 
 Figure 2‑3 below depicts the shared responsibility model and concept of managed and hosted cloud services as it relates to containers. This includes:
 
--   **Managed** implies the control plane of a service is managed by a third party while the data plane is managed by the GC (a managed service such as Azure Kubernetes Service)
--   **Hosted** means both the control and data planes are managed by the GC, regardless who manage the infrastructure underneath. For example, deploying Kubernetes on EC2 or on-premise compute.
+- **Managed** implies the control plane of a service is managed by a third party while the data plane is managed by the GC (a managed service such as Azure Kubernetes Service)
+- **Hosted** means both the control and data planes are managed by the GC, regardless who manage the infrastructure underneath. For example, deploying Kubernetes on EC2 or on-premise compute.
 
 ![](../media/image4.png)
 
@@ -59,12 +59,12 @@ The benefits of containers often derive from their speed and lightweight nature;
 
 VMs and containers differ on quite a few dimensions, but primarily because containers provide a way to virtualize an OS in order for multiple workloads to run on a single OS instance, whereas with VMs, the hardware is being virtualized to run multiple OS instances. Containers' speed, agility and portability make them yet another tool to help streamline software development and continuous deployment. Distinguishing characteristics include;
 
--   Virtual machines contain a complete operating system and applications.
--   Virtual machines use hypervisors to share and manage hardware while containers share the kernel of the host OS to access the hardware.
--   Virtual machines have their own kernel and VM's don't use and share the kernel of the host OS, hence VM's are isolated from each other at a deep level.
--   Virtual machines residing on the same server can run different operating systems. One VM can run Windows while the VM next door might be running Ubuntu.
--   Containers are bound by the host OS, containers on the same server use the same OS.
--   Containers are virtualizing the underlying operating system while virtual machines are virtualizing the underlying hardware.
+- Virtual machines contain a complete operating system and applications.
+- Virtual machines use hypervisors to share and manage hardware while containers share the kernel of the host OS to access the hardware.
+- Virtual machines have their own kernel and VM's don't use and share the kernel of the host OS, hence VM's are isolated from each other at a deep level.
+- Virtual machines residing on the same server can run different operating systems. One VM can run Windows while the VM next door might be running Ubuntu.
+- Containers are bound by the host OS, containers on the same server use the same OS.
+- Containers are virtualizing the underlying operating system while virtual machines are virtualizing the underlying hardware.
 
 OS containers are virtual environments that share the kernel of the host operating system but provide user space isolation. For all practical purposes, you can think of OS containers as VMs. You can install, configure and run different applications, libraries, etc., just as you would on any OS. Just as a VM, anything running inside a container can only see resources that have been assigned to that container.
 
@@ -116,14 +116,13 @@ Technologies, such as Flocker, help address the host portability problem by crea
 
 As container technologies evolve, it will become easier to tackle the stateful services problem.
 
-
 **2** - **Do Not Share Libraries or SDKs**
 
 The premise of microservices is based on autonomous and fine-grained units of code that do one thing and one thing only. This is closely aligned with the principle of "don't repeat yourself" (DRY), which states that every piece of knowledge must have a single, unambiguous, authoritative representation within a system.
 
 Every service is a self-contained unit of OS, runtime, framework, third-party libraries and code. When one or more containers rely on the same library, it may be tempting to share the dependencies by centrally configuring them on the host. This model introduces complexities in the long run. It not only it brings host affinity, but also breaks the CI/CD pipeline. Upgrading the library or SDK might end up breaking a service. Each service should be treated entirely independent of others.
 
-In some scenarios, the commonly used libraries and SDKs can be moved to a dedicated service that can be managed independently, making the service immutable. 
+In some scenarios, the commonly used libraries and SDKs can be moved to a dedicated service that can be managed independently, making the service immutable.
 
 **3** - **Avoid Host Affinity**
 
@@ -187,7 +186,6 @@ Though each microservice is part of a large, composite application, from a devel
 
 This mechanism makes it possible to implement blue/green testing of each service before rolling out the production version.  
 
-
 ### 2.5.2 Service Mesh
 
 Microservices introduce new components, workflow and process into a team, and organizations deploying them soon realize they require new methods and tools for security, observability and management. This most often includes the implementation of a service mesh, with circuit breaking, service registry and discovery; debugging, tracing, logging; metrics collection; authentication; network separation and others. [Istio](https://istio.io/), [Conduit](https://conduit.io/) and/or application platform load balancers (such as [NGINX](https://www.nginx.com/)) implement some or all of these features.
@@ -200,25 +198,25 @@ A recent example with Istio deployed as a 'sidecar' in Kubernetes, supporting po
 
 Functions of a service mesh:
 
--   Automatic mutual TLS between services
--   Service-level RBAC
--   External identity provider integration
--   Policy and quota enforcement, dynamic per-request routing
--   Deployment strategies such as red/black, canary, dark/mirrored
--   Distributed tracing
--   Network policy between apps/services, and on ingress/egress
+- Automatic mutual TLS between services
+- Service-level RBAC
+- External identity provider integration
+- Policy and quota enforcement, dynamic per-request routing
+- Deployment strategies such as red/black, canary, dark/mirrored
+- Distributed tracing
+- Network policy between apps/services, and on ingress/egress
 
-## 2.6 Functions as a Service 
+## 2.6 Functions as a Service
 
 Functions as a service (FaaS) sometimes referred to as event-driven architecture or even serverless is a relatively recent architectural principle found in microservices. Initially FaaS was a piece of code uploaded to run on specific CSP compute engines (i.e. AWS Lambda, Azure Functions, etc.) without any consideration for infrastructure. Serverless has evolved to describe managed containers since the build pipeline does not specify or manage the compute where the container runs. Event-driven architectures sometimes trigger a chain of serverless events, all requiring the application of controls to reduce risk.
 
 Since an event-driven instance does not exist until invoked, serverless changes IT management, monitoring and requirements in a number of ways:
 
--   Security (ensure integrity of code, IAM polices, monitoring, forensics)
--   Build pipelines immature (CI/CD)
--   Administration (patching, deployment)
--   Architecture (new architectural constructs)
--   Lock-in (currently different standards and interoperability between CSP's)
+- Security (ensure integrity of code, IAM polices, monitoring, forensics)
+- Build pipelines immature (CI/CD)
+- Administration (patching, deployment)
+- Architecture (new architectural constructs)
+- Lock-in (currently different standards and interoperability between CSP's)
 
 Security for pure serverless functions are mostly centered on the classification of code and IAM policies and protection for data at rest, since the functions are dormant until executed. Once running, the zoning and access controls can be applied by IAM, CSP policy and third party security brokers. As serverless functions mature, they will be able to inherit controls from the CSP compliance reports.
 
@@ -232,7 +230,7 @@ Overall toolchains for creating and deploying serverless functions are also impr
 
 Regardless of deployment method, runtime monitoring is required for:
 
--   Detection of abnormal behaviour from the baseline, leveraging syscalls, network calls and other available information
--   Remediation of a potential threat, for example, via container isolation on a different network, pausing the container, or restarting it
--   Forensics to identify the event, based on detailed logs and the containers' image during the event
--   Run-time policies and isolation, limiting what kinds of behaviour are allowed in your environment
+- Detection of abnormal behaviour from the baseline, leveraging syscalls, network calls and other available information
+- Remediation of a potential threat, for example, via container isolation on a different network, pausing the container, or restarting it
+- Forensics to identify the event, based on detailed logs and the containers' image during the event
+- Run-time policies and isolation, limiting what kinds of behaviour are allowed in your environment
