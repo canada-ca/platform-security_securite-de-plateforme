@@ -6,7 +6,6 @@ With the introduction of cloud services and the adoption of "continuous deployme
 
 ## 1.2 Document Purpose and Scope
 
-
 This document provides guidance to developers and operators when deploying applications and services using containers and microservices. It is based on [GC Cloud Reference Architecture](https://gccollab.ca/file/view/590020/gc-cloud-reference-architecture) (v0.95) and is aligned with the [GC Enterprise Security Architecture Program](http://www.gcpedia.gc.ca/wiki/Government_of_Canada_Enterprise_Security_Architecture_(ESA)_Program).
 
 ## 1.3 Audience
