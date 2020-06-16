@@ -34,7 +34,7 @@ internet, so I am not going to rehash everything here. As a simple
 illustration, the following diagram shows the components of an
 application as it relates to either VMs or containers.
 
-![](../media/image_13.png){width="6.5in" height="3.4722222222222223in"}
+![](../media/image_13.png)
 
 Ref:
 [https://blog.netapp.com/blogs/containers-vs-vms/](https://blog.netapp.com/blogs/containers-vs-vms/)
@@ -139,7 +139,7 @@ different ways to manage application scheduling and isolation to help
 you understand what placement rules your application should take into
 consideration.
 
-![](../media/image_2.png){width="6.25in" height="5.59375in"}
+![](../media/image_2.png)
 
 ### Workload Scheduling & Placement
 
@@ -182,7 +182,7 @@ Reference the documentation for more detail on [taints and toleration](https://k
 
 ##### Pod Affinity/Anti-Affinity
 
-***You should be using Pod Affinity when you are asking the question:
+***You should be using Pod Affinity when you are asking the question:  
 "Should I run this Pod in the same place as this other Pod?"***
 
 Pod Affinity/Anti-Affinity enables you to restrict which nodes your pod
@@ -199,7 +199,7 @@ rules being evaluated.
 
 ##### Node Affinity/Anti-Affinity
 
-***You should be using Node Affinity when you are asking the question:
+***You should be using Node Affinity when you are asking the question:  
 "Should I run this Pod on this Node?"***
 
 [Node Affinity](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity)
@@ -241,7 +241,7 @@ RoleBinding and ClusterRoleBinding behave the same, but in different
 contexts. A RoleBinding associates a user with a role and a context
 (namespace or cluster).
 
-![](../media/image_8.png){width="3.8854166666666665in" height="3.0625in"}
+![](../media/image_8.png)
 
 ### Service Mesh
 
@@ -275,9 +275,13 @@ based on the features you care about. Following is a list of behaviors
 commonly found in a service mesh implementation:
 
 -   Traffic shaping with dynamic routing controls between services
+
 -   Resiliency support for service communication such as circuit breakers, timeouts, and retries
+
 -   Observability of traffic between services
+
 -   Tracing of communication flows
+
 -   Secure communication between services
 
 Many service mesh implementations have the same general reference
@@ -287,7 +291,7 @@ incoming and outgoing traffic to that pod and validates security
 conformance with the control plane. The control plane is responsible to
 transfer configurations to the proxies in their native format.
 
-![](../media/image_12.png){width="5.755208880139983in" height="2.1858727034120733in"}
+![](../media/image_12.png)
 
 ### Access Control and Policy Enforcement
 
@@ -314,7 +318,9 @@ With OPA, you define rules that govern how your system should behave.
 These rules exist to answer questions like:
 
 -   Can user X call operation Y on resource Z?
+
 -   What clusters should workload W be deployed to?
+
 -   What tags must be set on resource R before it\'s created?
 
 Services integrate with OPA by executing queries when policy decisions
@@ -324,8 +330,11 @@ decision is sent back as the result of the query. For example, in a
 simple API authorization use case:
 
 -   You write rules that allow (or deny) access to your service APIs.
+
 -   Your service queries OPA when it receives API requests.
+
 -   OPA returns allow (or deny) decisions to your service.
+
 -   Your service enforces the decisions by accepting or rejecting requests accordingly.
 
 Policy enforcement systems could be integrated with API gateways to
@@ -333,7 +342,7 @@ enforce the policies at the API gateway level. The following figure
 illustrates the sequence of events that happens when an API gateway
 intercepts client requests to apply authorization policies using OPA.
 
-![](../media/image_5.png){width="5.614583333333333in" height="3.0in"}
+![](../media/image_5.png)
 
 Securing Container Runtime 
 ---------------------------
@@ -341,7 +350,9 @@ Securing Container Runtime
 In order to run containers securely, we aim to do the following:
 
 -   Use least privilege to carry out the task at hand.
+
 -   Enforce resource allocation
+
 -   Limit communication between applications, and to and from the outside world, to a defined and deterministic set of connections.
 
 ### Least-Privilege Security Settings 
@@ -404,7 +415,7 @@ Containers have multiple dimensions at runtime, such as a memory usage
 dimension, a CPU usage dimension, and other resource consumption
 dimensions.
 
-![](../media/image_10.png){width="4.764583333333333in" height="1.9547003499562554in"}
+![](../media/image_10.png)
 
 Every container must declare its resource requirements and pass that
 information to the platform. These requirements are important
@@ -441,8 +452,11 @@ Kubernetes cluster, it does have some limitations as well which should
 be considered.
 
 -   Kubernetes network policies are applied to the pod ports, not to the service ports.
+
 -   Network policies must be updated if the container port changes.
+
 -   Kubernetes network policies can not generate traffic logs, which can make it difficult to perform security analysis.
+
 -   Kubernetes network policies don't allow you to specify a FQDN for egress traffic.
 
 Due to some of these limitations, a new security approach has been
@@ -501,7 +515,9 @@ granting access to your resources, you need to figure out **who** wants
 access to your resources, for **what** purpose, and for **how long**.
 
 -   Who: Ensure that only permitted entities are granted access to your resources.
+
 -   What purpose: Ensure that the permitted entities can perform only what they're allowed to perform on your resources.
+
 -   How long: Ensure that access is granted for only the desired period.
 
 In the case that the organization is not ready to adapt API Gateways,
@@ -643,12 +659,19 @@ implement extra layers of protection
 An API is vulnerable if it:
 
 -   Permits [credential stuffing](https://www.owasp.org/index.php/Credential_stuffing) whereby the attacker has a list of valid usernames and passwords.
+
 -   Permits attackers to perform a brute force attack on the same user account, without presenting captcha/account lockout mechanism.
+
 -   Permits weak passwords.
+
 -   Sends sensitive authentication details, such as auth tokens and passwords in the URL.
+
 -   Doesn't validate the authenticity of tokens.
+
 -   Accepts unsigned/weakly signed JWT tokens ("alg":"none") doesn't validate their expiration date.
+
 -   Uses plain text, encrypted, or weakly hashed passwords.
+
 -   Uses weak encryption keys.
 
 #### Data Exposure
@@ -659,10 +682,15 @@ way without thinking about the sensitivity of the exposed data.
 Excessive Data Exposure commonly leads to exposure of sensitive data.
 
 -   Never rely on the client side to filter sensitive data.
+
 -   Review the responses from the API to make sure they contain only legitimate data.
+
 -   Backend engineers should always ask themselves "who is the consumer of the data?" before exposing a new API endpoint.
+
 -   Avoid using generic methods such as `to_json()` and `to_string()`. Instead, cherry-pick specific properties you really want to return
+
 -   Classify sensitive and personally identifiable information (PII) that your application stores and works with, reviewing all API calls returning such information to see if these responses pose a security issue.
+
 -   Implement a schema-based response validation mechanism as an extra layer of security. As part of this mechanism define and enforce data returned by all API methods, including errors.
 
 #### Resource and Rate Limiting
@@ -711,8 +739,11 @@ intended to expose. Exploitation may lead to privilege escalation, data
 tampering, bypass of security mechanisms, and more.
 
 -   If possible, avoid using functions that automatically bind a client's input into code variables or internal objects.
+
 -   Whitelist only the properties that should be updated by the client.
+
 -   Use built-in features to blacklist properties that should not be accessed by clients.
+
 -   If applicable, explicitly define and enforce schemas for the input data payloads.
 
 Many frameworks offer their own mechanisms for trying to address these
@@ -773,11 +804,17 @@ Preventing injection requires keeping data separate from commands and
 queries.
 
 -   Perform data validation using a single, trustworthy, and actively maintained library.
+
 -   Validate, filter, and sanitize all client-provided data, or other data coming from integrated systems.
+
 -   Special characters should be escaped using the specific syntax for the target interpreter.
+
 -   Prefer a safe API that provides a parameterized interface.
+
 -   Always limit the number of returned records to prevent mass disclosure in case of injection.
+
 -   Validate incoming data using sufficient filters to only allow valid values for each input parameter.
+
 -   Define data types and strict patterns for all string parameters.
 
 #### Improper Asset Management
@@ -893,7 +930,7 @@ This principle dictates that every container should address a single
 concern and do it well. If you need to address multiple concerns, you
 can use patterns such as sidecar and init-containers.
 
-![](../media/image_9.png){width="6.5in" height="2.1944444444444446in"}
+![](../media/image_9.png)
 
 The main motivation for this principle is container image reuse and
 replaceability. If you create a container that addresses a single
@@ -909,7 +946,7 @@ you'll get a new image as a result.
 Immutable principle of images enables the team to create an image once
 and reuse it multiple times in different environments.
 
-![](../media/image_4.png){width="6.5in" height="2.486111111111111in"}
+![](../media/image_4.png)
 
 The immutable principle of the images also implies that the image should
 not contain any environment-specific configuration. Ideally, the
@@ -942,7 +979,7 @@ then copy those application artifacts into a minimal image for your
 release artifact. An example of this approach can be reviewed in this
 [blog post](https://medium.com/@chemidy/create-the-smallest-and-secured-golang-docker-image-based-on-scratch-4752223b7324).
 
-![](../media/image_3.png){width="4.723941382327209in" height="2.5364588801399823in"}
+![](../media/image_3.png)
 
 The only exceptions are things such as configurations and secrets, which
 vary between different environments and must be provided at runtime; for
@@ -968,7 +1005,7 @@ be significant to your application life-cycle management. For example,
 some applications need to warm up before service requests and some need
 to release resources before shutting down cleanly.
 
-![](../media/image_1.png){width="4.473958880139983in" height="1.603652668416448in"}
+![](../media/image_1.png)
 
 ### Process Disposability
 
@@ -1034,7 +1071,7 @@ vulnerabilities, such as compliance or open source license violations.
 It is best to have a defense in depth strategy when it comes to securing
 container images.
 
-![](../media/image_14.png){width="4.594444444444444in" height="4.307292213473316in"}
+![](../media/image_14.png)
 
 ### Patch Container Image
 
@@ -1121,7 +1158,7 @@ available for accepting traffic. The readiness probe is used to control
 which pods are used as the backends for a service. A pod is considered
 ready when all of its containers are ready.
 
-![](../media/image_7.png){width="5.319469597550306in" height="1.8177088801399826in"}
+![](../media/image_7.png)
 
 ### Logging
 
@@ -1157,18 +1194,27 @@ with the deployed application/service. The important elements to catch
 in application monitoring are:
 
 -   Is the application down?
+
 -   Are there performance issues with the newly deployed application?
+
 -   Is there high latency?
+
 -   Are there application errors?
+
 -   What is your team's ability to deliver software changes?
 
 Typical metrics that are important in this context are:
 
 -   up/down status of service
+
 -   Throughput of application and how much it deviates from "normal"
+
 -   HTTP or application errors (4xx, 5xx)
+
 -   Latency of application and how much it deviates from "normal"
+
 -   How many deployments are failing/succeeding
+
 -   How long builds are taking
 
 ### Tracing
@@ -1190,7 +1236,7 @@ tracing system, like Jaeger, to enable a detailed view of issues and
 latency if ever an issue is detected. The following image shows these
 concepts visually:
 
-![](../media/image_6.png){width="3.7906233595800525in" height="4.036458880139983in"}
+![](../media/image_6.png)
 
 Secret Management
 -----------------
@@ -1215,19 +1261,26 @@ architecture so the micro-services model can effectively manage secrets
 and handle security breaches by adhering to these must-dos:
 
 -   Secure storage of various type of secrets (API Token, Keys, Certificates, username & passwords) at rest
+
 -   Reliable API based access to secrets
+
 -   Dynamic secret distribution for automated encryption and authentication of keys
+
 -   Full Audit of access to secrets.
+
 -   Multi-level role based access to secrets
+
 -   Centralized revocation of secrets and redistribution\
 
-![](../media/image_11.png){width="5.848958880139983in" height="4.198042432195975in"}
+![](../media/image_11.png)
 
 Kubernetes offers the **Secret** object to solve some of these
 challenges. It provides basic security capabilities such as:
 
 -   Enabling encryption at rest
+
 -   Defining authorization policies
+
 -   White listing access to specific container instances
 
 The Kubernetes project however
@@ -1395,6 +1448,7 @@ scripts, test data, infrastructure and application configuration,
 libraries, packages, documentation, firewall rules, ...
 
 -   Anything that is human readable goes in to the source code repository
+
 -   All machine files go in to the artifact repository (binaries, docker images, RPM packages)
 
 Infrastructure as Code (IaC) aims to define the desired state of a
