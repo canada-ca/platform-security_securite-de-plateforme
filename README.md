@@ -30,7 +30,18 @@ This guidance provides recommendations to secure containers and microservices wh
   - [4.2 Image Builds](en/4_Implementation-Recommendations.md/#42-image-builds)
   - [4.3 Container Security Brokers](en/4_Implementation-Recommendations.md/#43-container-security-brokers)
   - [4.4 Orchestration - Kubernetes](en/4_Implementation-Recommendations.md/#44-orchestration---kubernetes)
-- [5. References](en/5_References.md)
+- [5. Additional Microservices and Container Security Guidelines](en/5_Microservice_Security.md)
+  - [5.1 Securing Platform](en/5_Microservice_Security.md#51-securing-platform)
+  - [5.2 Securing Container Runtime](en/5_Microservice_Security.md#52-securing-container-runtime)
+  - [5.3 Securing Traffic](en/5_Microservice_Security.md#53-securing-traffic)
+  - [5.4 Securing Coding Practices](en/5_Microservice_Security.md#54-secure-coding-practices)
+  - [5.5 Architecting Your Application for Cloud](en/5_Microservice_Security.md#55-architecting-your-application-for-cloud)
+  - [5.6 Securing Container Images](en/5_Microservice_Security.md#56-securing-container-images)
+  - [5.7 Observability]en/5_Microservice_Security.md#57-observability)
+  - [5.8 Secrets Management](en/5_Microservice_Security.md#58-secrets-management)
+  - [5.9 Continuous Integration/Continuous Deployment (CI/CD)](en/5_Microservice_Security.md#59-continuous-integrationcontinuous-deployment-cicd)
+  - [5.10 Infrastructure as Code](en/5_Microservice_Security.md#510-infrastructure-as-code)  
+- [6. References](en/6_References.md)
 
 ## List of Tables
 
