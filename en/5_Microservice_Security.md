@@ -1235,7 +1235,7 @@ concepts visually:
 
 ![](../media/image_6.png)
 
-## 5.8 Secret Management
+## 5.8 Secrets Management
 
 Secrets management is a critical component of container security. A
 secret, in the context of containers, is any information that will put
@@ -1331,7 +1331,7 @@ machine-generated passwords that are unique and can't be easily cracked.
 Today, most secrets management tools have automated password generation
 as a default feature.
 
-## 5.9 CI/CD
+## 5.9 Continuous Integration/Continuous Deployment (CI/CD)
 
 ### Commit Signing
 
