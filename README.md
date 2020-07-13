@@ -37,7 +37,7 @@ This guidance provides recommendations to secure containers and microservices wh
   - [5.4 Securing Coding Practices](en/5_Microservice_Security.md#54-secure-coding-practices)
   - [5.5 Architecting Your Application for Cloud](en/5_Microservice_Security.md#55-architecting-your-application-for-cloud)
   - [5.6 Securing Container Images](en/5_Microservice_Security.md#56-securing-container-images)
-  - [5.7 Observability]en/5_Microservice_Security.md#57-observability)
+  - [5.7 Observability](en/5_Microservice_Security.md#57-observability)
   - [5.8 Secrets Management](en/5_Microservice_Security.md#58-secrets-management)
   - [5.9 Continuous Integration/Continuous Deployment (CI/CD)](en/5_Microservice_Security.md#59-continuous-integrationcontinuous-deployment-cicd)
   - [5.10 Infrastructure as Code](en/5_Microservice_Security.md#510-infrastructure-as-code)  
