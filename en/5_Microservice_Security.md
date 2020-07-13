@@ -1,7 +1,8 @@
 # 5. Additional Micro-services and Container Security Guidelines
 
-Securing Platform
------------------
+The following section provides additional guidelines.
+
+## 5.1 Securing Platform
 
 ### Multi-Tenancy
 
@@ -343,8 +344,7 @@ intercepts client requests to apply authorization policies using OPA.
 
 ![](../media/image_5.png)
 
-Securing Container Runtime 
----------------------------
+## 5.2 Securing Container Runtime 
 
 In order to run containers securely, we aim to do the following:
 
@@ -463,8 +463,8 @@ developed called a Service Mesh. There are a number of available service
 meshes available today, but the general principles will be covered in
 the next section.
 
-Securing Traffic
-----------------
+
+## 5.3 Securing Traffic
 
 In an ideal world, the micro-services developer should only worry about
 the business functionality of a micro-service, and the rest should be
@@ -576,8 +576,8 @@ the message broker and to authenticate the clients connecting to it.
 micro-services performing different types of actions on the message
 broker resources such as topics and queues.
 
-Secure Coding Practices
------------------------
+
+## 5.4 Secure Coding Practices
 
 ### Crypto Libraries
 
@@ -915,8 +915,8 @@ To resolve these issues:
 
 2.  Continuously checking your frontend code for security vulnerabilities. Scanning of frontend dependencies is done by default by the JavaScript package manager npm, anda tool such as OWASP ZAP is excellent for inspecting the communication the frontend has with the api for unsafe practices.
 
-Architecting Your Application for Cloud
----------------------------------------
+
+## 5.5 Architecting Your Application for Cloud
 
 In this section, we highlight some principles to build cloud-native
 applications. The purpose of these principles is to help you create
@@ -1022,8 +1022,7 @@ reduces container size, build time, and networking time when copying
 container images. Additionally, small containers reduce the attack
 surfaces and expose less vulnerabilities.
 
-Securing Container Images
--------------------------
+## 5.6 Securing Container Images
 
 ### Scan Images for Vulnerabilities
 
@@ -1134,8 +1133,7 @@ For adequate security, a registry should also include a way of auditing
 container images for outdated code and known vulnerabilities and
 identifying outdated containers based on the audit results.
 
-Observability
--------------
+## 5.7 Observability
 
 ### Health Check and Auto Healing
 
@@ -1237,8 +1235,7 @@ concepts visually:
 
 ![](../media/image_6.png)
 
-Secret Management
------------------
+## 5.8 Secret Management
 
 Secrets management is a critical component of container security. A
 secret, in the context of containers, is any information that will put
@@ -1334,8 +1331,7 @@ machine-generated passwords that are unique and can't be easily cracked.
 Today, most secrets management tools have automated password generation
 as a default feature.
 
-CI/CD
------
+## 5.9 CI/CD
 
 ### Commit Signing
 
@@ -1434,8 +1430,7 @@ Static analysis of YAML configuration can be used to establish a
 baseline for runtime security. [kubesec](https://kubesec.io/) generates
 risk scores for resources.
 
-Infrastructure as Code
-----------------------
+## 5.10 Infrastructure as Code
 
 Configuration management refers to the process by which all
 configurations of your project are stored, retrieved, uniquely
