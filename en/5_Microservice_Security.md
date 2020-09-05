@@ -274,15 +274,15 @@ features, so please verify which service mesh is the best fit for you
 based on the features you care about. Following is a list of behaviors
 commonly found in a service mesh implementation:
 
--   Traffic shaping with dynamic routing controls between services
+- Traffic shaping with dynamic routing controls between services
 
--   Resiliency support for service communication such as circuit breakers, timeouts, and retries
+- Resiliency support for service communication such as circuit breakers, timeouts, and retries
 
--   Observability of traffic between services
+- Observability of traffic between services
 
--   Tracing of communication flows
+- Tracing of communication flows
 
--   Secure communication between services
+- Secure communication between services
 
 Many service mesh implementations have the same general reference
 architecture. A service mesh will have a control plane to program the
@@ -317,11 +317,11 @@ it is by no means the only option.
 With OPA, you define rules that govern how your system should behave.
 These rules exist to answer questions like:
 
--   Can user X call operation Y on resource Z?
+- Can user X call operation Y on resource Z?
 
--   What clusters should workload W be deployed to?
+- What clusters should workload W be deployed to?
 
--   What tags must be set on resource R before it\'s created?
+- What tags must be set on resource R before it\'s created?
 
 Services integrate with OPA by executing queries when policy decisions
 are needed. When you query OPA for a policy decision, OPA evaluates the
@@ -329,13 +329,13 @@ rules and data (which you give it) to produce an answer. The policy
 decision is sent back as the result of the query. For example, in a
 simple API authorization use case:
 
--   You write rules that allow (or deny) access to your service APIs.
+- You write rules that allow (or deny) access to your service APIs.
 
--   Your service queries OPA when it receives API requests.
+- Your service queries OPA when it receives API requests.
 
--   OPA returns allow (or deny) decisions to your service.
+- OPA returns allow (or deny) decisions to your service.
 
--   Your service enforces the decisions by accepting or rejecting requests accordingly.
+- Your service enforces the decisions by accepting or rejecting requests accordingly.
 
 Policy enforcement systems could be integrated with API gateways to
 enforce the policies at the API gateway level. The following figure
@@ -344,28 +344,28 @@ intercepts client requests to apply authorization policies using OPA.
 
 ![](../media/image_5.png)
 
-## 5.2 Securing Container Runtime 
+## 5.2 Securing Container Runtime
 
 In order to run containers securely, we aim to do the following:
 
--   Use least privilege to carry out the task at hand.
+- Use least privilege to carry out the task at hand.
 
--   Enforce resource allocation
+- Enforce resource allocation
 
--   Limit communication between applications, and to and from the outside world, to a defined and deterministic set of connections.
+- Limit communication between applications, and to and from the outside world, to a defined and deterministic set of connections.
 
-### Least-Privilege Security Settings 
+### Least-Privilege Security Settings
 
 #### Say No to Root
 
 According to the principle of least privilege, it would make sense to
 run a container as a non-root user. There are however some exceptions:
 
--   Your container needs to modify the host system; for example, modifying the kernel's configuration.
+- Your container needs to modify the host system; for example, modifying the kernel's configuration.
 
--   The container needs to bind to privileged ports on the node (below 1024 --- for example, nginx serving on port 80). In practice, this can be by-and-large avoided through port mappings and the service abstraction in Kubernetes.
+- The container needs to bind to privileged ports on the node (below 1024 --- for example, nginx serving on port 80). In practice, this can be by-and-large avoided through port mappings and the service abstraction in Kubernetes.
 
--   Installing software into a container at runtime: traditional package management systems might require root to function or store files in a certain location with a different user ID than the user executing the program. This approach is generally considered bad practice since any code installed at runtime has not been scanned for vulnerabilities or other policy requirements.
+- Installing software into a container at runtime: traditional package management systems might require root to function or store files in a certain location with a different user ID than the user executing the program. This approach is generally considered bad practice since any code installed at runtime has not been scanned for vulnerabilities or other policy requirements.
 
 #### Use a read-only root filesystem
 
@@ -450,19 +450,18 @@ While network policies can absolutely improve the security of a
 Kubernetes cluster, it does have some limitations as well which should
 be considered.
 
--   Kubernetes network policies are applied to the pod ports, not to the service ports.
+- Kubernetes network policies are applied to the pod ports, not to the service ports.
 
--   Network policies must be updated if the container port changes.
+- Network policies must be updated if the container port changes.
 
--   Kubernetes network policies can not generate traffic logs, which can make it difficult to perform security analysis.
+- Kubernetes network policies can not generate traffic logs, which can make it difficult to perform security analysis.
 
--   Kubernetes network policies don't allow you to specify a FQDN for egress traffic.
+- Kubernetes network policies don't allow you to specify a FQDN for egress traffic.
 
 Due to some of these limitations, a new security approach has been
 developed called a Service Mesh. There are a number of available service
 meshes available today, but the general principles will be covered in
 the next section.
-
 
 ## 5.3 Securing Traffic
 
@@ -494,15 +493,15 @@ micro-services.
 
 API gateway also enables the organization to
 
--   decouple the security from the micro-services. API gateway intercepts all the requests coming to a micro-service, talks to the respective authorization and dispatches only the legitimate requests to the upstream micro-services. Otherwise, it returns back an error message to the client application. This principle also allows the teams to change the authorization framework without any micro-service code change.
+- decouple the security from the micro-services. API gateway intercepts all the requests coming to a micro-service, talks to the respective authorization and dispatches only the legitimate requests to the upstream micro-services. Otherwise, it returns back an error message to the client application. This principle also allows the teams to change the authorization framework without any micro-service code change.
 
--   protect APIs from overuse, so you use the rate limiting and the request throttling.
+- protect APIs from overuse, so you use the rate limiting and the request throttling.
 
--   understand how people use APIs, so you've added analytics and monitoring tools.
+- understand how people use APIs, so you've added analytics and monitoring tools.
 
--   monetized APIs and connect them to a billing system.
+- monetized APIs and connect them to a billing system.
 
--   hide the details of API implementation from the external users
+- hide the details of API implementation from the external users
 
 There are a lot of commercial and open source solutions that support
 these features, such as Tyk, Kong, Ambassador.
@@ -513,11 +512,11 @@ granting controlled access to resources. And if security is all about
 granting access to your resources, you need to figure out **who** wants
 access to your resources, for **what** purpose, and for **how long**.
 
--   Who: Ensure that only permitted entities are granted access to your resources.
+- Who: Ensure that only permitted entities are granted access to your resources.
 
--   What purpose: Ensure that the permitted entities can perform only what they're allowed to perform on your resources.
+- What purpose: Ensure that the permitted entities can perform only what they're allowed to perform on your resources.
 
--   How long: Ensure that access is granted for only the desired period.
+- How long: Ensure that access is granted for only the desired period.
 
 In the case that the organization is not ready to adapt API Gateways,
 apps could be directly integrated with OAuth2 provider either
@@ -575,7 +574,6 @@ the message broker and to authenticate the clients connecting to it.
 **Define ACLs** to enforce authorization. ACLs permit or deny various
 micro-services performing different types of actions on the message
 broker resources such as topics and queues.
-
 
 ## 5.4 Secure Coding Practices
 
@@ -639,13 +637,13 @@ authorization checks. The checks should validate that the logged-in user
 does have access to perform the requested action on the requested
 object.
 
--   Implement a proper authorization mechanism that relies on the user policies and hierarchy.
+- Implement a proper authorization mechanism that relies on the user policies and hierarchy.
 
--   Use an authorization mechanism to check if the logged-in user has access to perform the requested action on the record in every function that uses an input from the client to access a record in the database.
+- Use an authorization mechanism to check if the logged-in user has access to perform the requested action on the record in every function that uses an input from the client to access a record in the database.
 
--   Prefer random and unpredictable values as GUIDs for records' IDs to prevent easy enumeration of records.
+- Prefer random and unpredictable values as GUIDs for records' IDs to prevent easy enumeration of records.
 
--   Write tests to evaluate the authorization mechanism. Do not deploy vulnerable changes that break the tests.
+- Write tests to evaluate the authorization mechanism. Do not deploy vulnerable changes that break the tests.
 
 #### User Authentication
 
@@ -657,21 +655,21 @@ implement extra layers of protection
 
 An API is vulnerable if it:
 
--   Permits [credential stuffing](https://www.owasp.org/index.php/Credential_stuffing) whereby the attacker has a list of valid usernames and passwords.
+- Permits [credential stuffing](https://www.owasp.org/index.php/Credential_stuffing) whereby the attacker has a list of valid usernames and passwords.
 
--   Permits attackers to perform a brute force attack on the same user account, without presenting captcha/account lockout mechanism.
+- Permits attackers to perform a brute force attack on the same user account, without presenting captcha/account lockout mechanism.
 
--   Permits weak passwords.
+- Permits weak passwords.
 
--   Sends sensitive authentication details, such as auth tokens and passwords in the URL.
+- Sends sensitive authentication details, such as auth tokens and passwords in the URL.
 
--   Doesn't validate the authenticity of tokens.
+- Doesn't validate the authenticity of tokens.
 
--   Accepts unsigned/weakly signed JWT tokens ("alg":"none") doesn't validate their expiration date.
+- Accepts unsigned/weakly signed JWT tokens ("alg":"none") doesn't validate their expiration date.
 
--   Uses plain text, encrypted, or weakly hashed passwords.
+- Uses plain text, encrypted, or weakly hashed passwords.
 
--   Uses weak encryption keys.
+- Uses weak encryption keys.
 
 #### Data Exposure
 
@@ -680,17 +678,17 @@ as data sources, sometimes developers try to implement them in a generic
 way without thinking about the sensitivity of the exposed data.
 Excessive Data Exposure commonly leads to exposure of sensitive data.
 
--   Never rely on the client side to filter sensitive data.
+- Never rely on the client side to filter sensitive data.
 
--   Review the responses from the API to make sure they contain only legitimate data.
+- Review the responses from the API to make sure they contain only legitimate data.
 
--   Backend engineers should always ask themselves "who is the consumer of the data?" before exposing a new API endpoint.
+- Backend engineers should always ask themselves "who is the consumer of the data?" before exposing a new API endpoint.
 
--   Avoid using generic methods such as `to_json()` and `to_string()`. Instead, cherry-pick specific properties you really want to return
+- Avoid using generic methods such as `to_json()` and `to_string()`. Instead, cherry-pick specific properties you really want to return
 
--   Classify sensitive and personally identifiable information (PII) that your application stores and works with, reviewing all API calls returning such information to see if these responses pose a security issue.
+- Classify sensitive and personally identifiable information (PII) that your application stores and works with, reviewing all API calls returning such information to see if these responses pose a security issue.
 
--   Implement a schema-based response validation mechanism as an extra layer of security. As part of this mechanism define and enforce data returned by all API methods, including errors.
+- Implement a schema-based response validation mechanism as an extra layer of security. As part of this mechanism define and enforce data returned by all API methods, including errors.
 
 #### Resource and Rate Limiting
 
@@ -701,15 +699,15 @@ the fact that requests from multiple API clients compete for resources.
 It's common to find APIs that do not implement rate limiting or APIs
 where limits are not properly set.
 
--   Docker makes it easy to limit [memory](https://docs.docker.com/config/containers/resource_constraints/#memory), [CPU](https://docs.docker.com/config/containers/resource_constraints/#cpu), [number of restarts](https://docs.docker.com/engine/reference/commandline/run/#restart-policies---restart), [file descriptors, and processes](https://docs.docker.com/engine/reference/commandline/run/#set-ulimits-in-container---ulimit).
+- Docker makes it easy to limit [memory](https://docs.docker.com/config/containers/resource_constraints/#memory), [CPU](https://docs.docker.com/config/containers/resource_constraints/#cpu), [number of restarts](https://docs.docker.com/engine/reference/commandline/run/#restart-policies---restart), [file descriptors, and processes](https://docs.docker.com/engine/reference/commandline/run/#set-ulimits-in-container---ulimit).
 
--   Implement a limit on how often a client can call the API within a defined timeframe.
+- Implement a limit on how often a client can call the API within a defined timeframe.
 
--   Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will be reset.
+- Notify the client when the limit is exceeded by providing the limit number and the time at which the limit will be reset.
 
--   Add proper server-side validation for query string and request body parameters, specifically the one that controls the number of records to be returned in the response.
+- Add proper server-side validation for query string and request body parameters, specifically the one that controls the number of records to be returned in the response.
 
--   Define and enforce maximum size of data on all incoming parameters and payloads such as maximum length for strings and maximum number of elements in arrays.
+- Define and enforce maximum size of data on all incoming parameters and payloads such as maximum length for strings and maximum number of elements in arrays.
 
 #### Function Level Authorization
 
@@ -722,11 +720,11 @@ authorization module that is invoked from all your micro-services.
 Frequently, such protection is provided by one or more components
 external to the application code.
 
--   The enforcement mechanism(s) should deny all access by default, requiring explicit grants to specific roles for access to every function.
+- The enforcement mechanism(s) should deny all access by default, requiring explicit grants to specific roles for access to every function.
 
--   Make sure that all of your administrative controllers inherit from an administrative abstract controller that implements authorization checks based on the user's group/role.
+- Make sure that all of your administrative controllers inherit from an administrative abstract controller that implements authorization checks based on the user's group/role.
 
--   Make sure that administrative functions inside a regular controller implements authorization checks based on the user's group and role.
+- Make sure that administrative functions inside a regular controller implements authorization checks based on the user's group and role.
 
 #### Mass Assignment
 
@@ -737,13 +735,13 @@ overwrite sensitive object's properties that the developers never
 intended to expose. Exploitation may lead to privilege escalation, data
 tampering, bypass of security mechanisms, and more.
 
--   If possible, avoid using functions that automatically bind a client's input into code variables or internal objects.
+- If possible, avoid using functions that automatically bind a client's input into code variables or internal objects.
 
--   Whitelist only the properties that should be updated by the client.
+- Whitelist only the properties that should be updated by the client.
 
--   Use built-in features to blacklist properties that should not be accessed by clients.
+- Use built-in features to blacklist properties that should not be accessed by clients.
 
--   If applicable, explicitly define and enforce schemas for the input data payloads.
+- If applicable, explicitly define and enforce schemas for the input data payloads.
 
 Many frameworks offer their own mechanisms for trying to address these
 types of issues. For example, [Ruby on Rails offers Strong Parameters](https://edgeguides.rubyonrails.org/action_controller_overview.html#strong-parameters)
@@ -759,37 +757,37 @@ may lead to full server compromise.
 
 The API might be vulnerable if:
 
-1.  Appropriate security hardening is missing across any part of the application stack, or if it has improperly configured permissions on cloud services.
+1. Appropriate security hardening is missing across any part of the application stack, or if it has improperly configured permissions on cloud services.
 
-2.  The latest security patches are missing, or the systems are out of date.
+2. The latest security patches are missing, or the systems are out of date.
 
-3.  Unnecessary features are enabled (e.g., HTTP verbs).
+3. Unnecessary features are enabled (e.g., HTTP verbs).
 
-4.  Transport Layer Security (TLS) is missing.
+4. Transport Layer Security (TLS) is missing.
 
-5.  Security directives are not sent to clients (e.g., [Security Headers](https://www.owasp.org/index.php/OWASP_Secure_Headers_Project)).
+5. Security directives are not sent to clients (e.g., [Security Headers](https://www.owasp.org/index.php/OWASP_Secure_Headers_Project)).
 
-6.  A Cross-Origin Resource Sharing (CORS) policy is missing or improperly set.
+6. A Cross-Origin Resource Sharing (CORS) policy is missing or improperly set.
 
-7.  Error messages include stack traces, or other sensitive information is exposed.
+7. Error messages include stack traces, or other sensitive information is exposed.
 
 The API life cycle should include:
 
--   A repeatable hardening process leading to fast and easy deployment of a properly locked down environment.
+- A repeatable hardening process leading to fast and easy deployment of a properly locked down environment.
 
--   A task to review and update configurations across the entire API stack. The review should include: orchestration files, API components, and cloud services (e.g., S3 bucket permissions).
+- A task to review and update configurations across the entire API stack. The review should include: orchestration files, API components, and cloud services (e.g., S3 bucket permissions).
 
--   A secure communication channel for all API interactions access to static assets (e.g., images).
+- A secure communication channel for all API interactions access to static assets (e.g., images).
 
--   An automated process to continuously assess the effectiveness of the configuration and settings in all environments.
+- An automated process to continuously assess the effectiveness of the configuration and settings in all environments.
 
 Furthermore:
 
--   To prevent exception traces and other valuable information from being sent back to attackers, if applicable, define and enforce all API response payload schemas including error responses.
+- To prevent exception traces and other valuable information from being sent back to attackers, if applicable, define and enforce all API response payload schemas including error responses.
 
--   Ensure API can only be accessed by the specified HTTP verbs. All other HTTP verbs should be disabled (e.g. HEAD).
+- Ensure API can only be accessed by the specified HTTP verbs. All other HTTP verbs should be disabled (e.g. HEAD).
 
--   APIs expecting to be accessed from browser-based clients (e.g., WebApp front-end) served from separate origins should implement a proper Cross-Origin Resource Sharing (CORS) policy.
+- APIs expecting to be accessed from browser-based clients (e.g., WebApp front-end) served from separate origins should implement a proper Cross-Origin Resource Sharing (CORS) policy.
 
 #### Injection
 
@@ -802,19 +800,19 @@ It may also lead to DoS, or complete host takeover.
 Preventing injection requires keeping data separate from commands and
 queries.
 
--   Perform data validation using a single, trustworthy, and actively maintained library.
+- Perform data validation using a single, trustworthy, and actively maintained library.
 
--   Validate, filter, and sanitize all client-provided data, or other data coming from integrated systems.
+- Validate, filter, and sanitize all client-provided data, or other data coming from integrated systems.
 
--   Special characters should be escaped using the specific syntax for the target interpreter.
+- Special characters should be escaped using the specific syntax for the target interpreter.
 
--   Prefer a safe API that provides a parameterized interface.
+- Prefer a safe API that provides a parameterized interface.
 
--   Always limit the number of returned records to prevent mass disclosure in case of injection.
+- Always limit the number of returned records to prevent mass disclosure in case of injection.
 
--   Validate incoming data using sufficient filters to only allow valid values for each input parameter.
+- Validate incoming data using sufficient filters to only allow valid values for each input parameter.
 
--   Define data types and strict patterns for all string parameters.
+- Define data types and strict patterns for all string parameters.
 
 #### Improper Asset Management
 
@@ -823,21 +821,21 @@ unpatched APIs, resulting in leakage of sensitive data. Attackers may
 gain access to sensitive data, or even take over the server through old,
 unpatched API versions connected to the same database.
 
--   Inventory all API hosts and document important aspects of each one of them, focusing on the API environment (e.g., production, staging, test, development), who should have network access to the host (e.g., public, internal, partners) and the API version.
+- Inventory all API hosts and document important aspects of each one of them, focusing on the API environment (e.g., production, staging, test, development), who should have network access to the host (e.g., public, internal, partners) and the API version.
 
--   Inventory integrated services and documents important aspects such as their role in the system, what data is exchanged (data flow), and its sensitivity.
+- Inventory integrated services and documents important aspects such as their role in the system, what data is exchanged (data flow), and its sensitivity.
 
--   Document all aspects of your API such as authentication, errors, redirects, rate limiting, cross-origin resource sharing (CORS) policy and endpoints, including their parameters, requests, and responses.
+- Document all aspects of your API such as authentication, errors, redirects, rate limiting, cross-origin resource sharing (CORS) policy and endpoints, including their parameters, requests, and responses.
 
--   Generate documentation automatically by adopting open standards. Include the documentation build in your CI/CD pipeline.
+- Generate documentation automatically by adopting open standards. Include the documentation build in your CI/CD pipeline.
 
--   Make API documentation available to those authorized to use the API.
+- Make API documentation available to those authorized to use the API.
 
--   Use external protection measures such as API security firewalls for all exposed versions of your APIs, not just for the current production version.
+- Use external protection measures such as API security firewalls for all exposed versions of your APIs, not just for the current production version.
 
--   Avoid using production data with non-production API deployments. If this is unavoidable, these endpoints should get the same security treatment as the production ones.
+- Avoid using production data with non-production API deployments. If this is unavoidable, these endpoints should get the same security treatment as the production ones.
 
--   When newer versions of APIs include security improvements, perform risk analysis to make the decision of the mitigation actions required for the older version: for example, whether it is possible to backport the improvements without breaking API compatibility or you need to take the older version out quickly and force all clients to move to the latest version.
+- When newer versions of APIs include security improvements, perform risk analysis to make the decision of the mitigation actions required for the older version: for example, whether it is possible to backport the improvements without breaking API compatibility or you need to take the older version out quickly and force all clients to move to the latest version.
 
 #### Insufficient Logging and Monitoring
 
@@ -847,21 +845,21 @@ respond to them in a timely fashion. Without visibility over on-going
 malicious activities, attackers have plenty of time to fully compromise
 systems.
 
--   Log all failed authentication attempts, denied access, and input validation errors.
+- Log all failed authentication attempts, denied access, and input validation errors.
 
--   Logs should be written using a format suited to be consumed by a log management solution, and should include enough detail to identify the malicious actor.
+- Logs should be written using a format suited to be consumed by a log management solution, and should include enough detail to identify the malicious actor.
 
--   Logs should be handled as sensitive data, and their integrity should be guaranteed at rest and transit.
+- Logs should be handled as sensitive data, and their integrity should be guaranteed at rest and transit.
 
--   Configure a monitoring system to continuously monitor the infrastructure, network, and the API functioning.
+- Configure a monitoring system to continuously monitor the infrastructure, network, and the API functioning.
 
--   When appropriate, consider using a Security Information and Event Management (SIEM) system to aggregate and manage logs from all components of the API stack and hosts.
+- When appropriate, consider using a Security Information and Event Management (SIEM) system to aggregate and manage logs from all components of the API stack and hosts.
 
-    -   The role of a SIEM in this case is mainly for active threat detection and analysis, but many SIEMs cover a much wider range of features such as blocking and auditing. A few examples of solutions which fit into this category are Sysdig and Rapid7.
+  - The role of a SIEM in this case is mainly for active threat detection and analysis, but many SIEMs cover a much wider range of features such as blocking and auditing. A few examples of solutions which fit into this category are Sysdig and Rapid7.
 
-    -   When consolidating large amounts of log data into a single system, it is important to consider that passing log data over the public internet will get very expensive. It is recommended to keep the log data within the same cloud ecosystem as the workloads, or ensure that you have a direct connect to a remote location which can handle the amount of log traffic without incurring excessive data transfer costs.
+  - When consolidating large amounts of log data into a single system, it is important to consider that passing log data over the public internet will get very expensive. It is recommended to keep the log data within the same cloud ecosystem as the workloads, or ensure that you have a direct connect to a remote location which can handle the amount of log traffic without incurring excessive data transfer costs.
 
--   Configure custom dashboards and alerts, enabling suspicious activities to be detected and responded to earlier.
+- Configure custom dashboards and alerts, enabling suspicious activities to be detected and responded to earlier.
 
 #### Error Handling
 
@@ -905,16 +903,15 @@ introduced that should be recognized.
 SPAs are responsive and easy to deploy. However, they impose new
 security risks.
 
-1.  SPAs are causing many companies to publish public APIs for the first time, or to increase the number of publicly exposed APIs which must be protected from unauthorized access.
+1. SPAs are causing many companies to publish public APIs for the first time, or to increase the number of publicly exposed APIs which must be protected from unauthorized access.
 
-2.  Cross Site Scripting (XSS) Attacks -- occur when a vulnerable application allows arbitrary javascript code to be injected and executed on your page. This often occurs through the form fields on the page.
+2. Cross Site Scripting (XSS) Attacks -- occur when a vulnerable application allows arbitrary javascript code to be injected and executed on your page. This often occurs through the form fields on the page.
 
 To resolve these issues:
 
-1.  Use SSL and OAuth 2 tokens (with the expiry policy) to protect your APIs and the data in transit
+1. Use SSL and OAuth 2 tokens (with the expiry policy) to protect your APIs and the data in transit
 
-2.  Continuously checking your frontend code for security vulnerabilities. Scanning of frontend dependencies is done by default by the JavaScript package manager npm, anda tool such as OWASP ZAP is excellent for inspecting the communication the frontend has with the api for unsafe practices.
-
+2. Continuously checking your frontend code for security vulnerabilities. Scanning of frontend dependencies is done by default by the JavaScript package manager npm, anda tool such as OWASP ZAP is excellent for inspecting the communication the frontend has with the api for unsafe practices.
 
 ## 5.5 Architecting Your Application for Cloud
 
@@ -1029,13 +1026,13 @@ surfaces and expose less vulnerabilities.
 The software that you run in your Kubernetes cluster gets there in the
 form of container images. It is recommended to check that your images:
 
-1.  Don't include known critical vulnerabilities
+1. Don't include known critical vulnerabilities
 
-2.  Are the images you intended to use, and haven't been manipulated or replaced by a third party
+2. Are the images you intended to use, and haven't been manipulated or replaced by a third party
 
-3.  Meet other image policy requirements your organization might have in place
+3. Meet other image policy requirements your organization might have in place
 
-4.  Has only packages that are absolutely necessary. The small container images reduce the attack surface and are faster to startup.
+4. Has only packages that are absolutely necessary. The small container images reduce the attack surface and are faster to startup.
 
 To detect vulnerabilities, you need to use a container image scanner.
 The basic function of a container image scanner is to inspect the
@@ -1108,13 +1105,13 @@ be pulled to your systems. Several projects aim to help with the problem
 of ensuring the provenance of the application software running in a
 deployment:
 
--   The TUF project, and its implementation Notary, use signing to ensure the integrity of an image---that is, to make sure that the image retrieved from a registry at deployment time is the correct version as signed by a trusted authority. The Portieris admission controller can prevent images from being deployed if they don't have a valid Notary signature.
+- The TUF project, and its implementation Notary, use signing to ensure the integrity of an image---that is, to make sure that the image retrieved from a registry at deployment time is the correct version as signed by a trusted authority. The Portieris admission controller can prevent images from being deployed if they don't have a valid Notary signature.
 
--   Grafeas is another approach to storing and assuring image metadata, including signatures to validate image integrity.
+- Grafeas is another approach to storing and assuring image metadata, including signatures to validate image integrity.
 
--   The in-toto project provides a framework to protect the integrity of the components installed into an image, and the tests they have passed.
+- The in-toto project provides a framework to protect the integrity of the components installed into an image, and the tests they have passed.
 
--   Commercial security solutions can also add validation that the image being deployed is a precisely approved version that matches your policies.
+- Commercial security solutions can also add validation that the image being deployed is a precisely approved version that matches your policies.
 
 ### Container Registry Scanning
 
@@ -1190,29 +1187,29 @@ these metrics are important, they do not specifically point to an issue
 with the deployed application/service. The important elements to catch
 in application monitoring are:
 
--   Is the application down?
+- Is the application down?
 
--   Are there performance issues with the newly deployed application?
+- Are there performance issues with the newly deployed application?
 
--   Is there high latency?
+- Is there high latency?
 
--   Are there application errors?
+- Are there application errors?
 
--   What is your team's ability to deliver software changes?
+- What is your team's ability to deliver software changes?
 
 Typical metrics that are important in this context are:
 
--   up/down status of service
+- up/down status of service
 
--   Throughput of application and how much it deviates from "normal"
+- Throughput of application and how much it deviates from "normal"
 
--   HTTP or application errors (4xx, 5xx)
+- HTTP or application errors (4xx, 5xx)
 
--   Latency of application and how much it deviates from "normal"
+- Latency of application and how much it deviates from "normal"
 
--   How many deployments are failing/succeeding
+- How many deployments are failing/succeeding
 
--   How long builds are taking
+- How long builds are taking
 
 ### Tracing
 
@@ -1246,49 +1243,49 @@ passwords, etc.
 Micro-services brings with it a host of security and secrets management
 challenges.
 
--   Each micro-service has its own database and credentials, thereby increasing the number of secrets to be managed.
+- Each micro-service has its own database and credentials, thereby increasing the number of secrets to be managed.
 
--   Several developers & operators and applications have access to the database, thus making certificate management, credential storage, API keys etc. extremely difficult to manage.
+- Several developers & operators and applications have access to the database, thus making certificate management, credential storage, API keys etc. extremely difficult to manage.
 
--   With automated micro-service deployment, there are additional credentials for creation of resources (mostly in cloud), access to code and artifact repository, machine credentials to install components, etc.
+- With automated micro-service deployment, there are additional credentials for creation of resources (mostly in cloud), access to code and artifact repository, machine credentials to install components, etc.
 
 There is a need for secrets to be managed centrally for an application
 architecture so the micro-services model can effectively manage secrets
 and handle security breaches by adhering to these must-dos:
 
--   Secure storage of various type of secrets (API Token, Keys, Certificates, username & passwords) at rest
+- Secure storage of various type of secrets (API Token, Keys, Certificates, username & passwords) at rest
 
--   Reliable API based access to secrets
+- Reliable API based access to secrets
 
--   Dynamic secret distribution for automated encryption and authentication of keys
+- Dynamic secret distribution for automated encryption and authentication of keys
 
--   Full Audit of access to secrets.
+- Full Audit of access to secrets.
 
--   Multi-level role based access to secrets
+- Multi-level role based access to secrets
 
--   Centralized revocation of secrets and redistribution\
+- Centralized revocation of secrets and redistribution\
 
 ![](../media/image_11.png)
 
 Kubernetes offers the **Secret** object to solve some of these
 challenges. It provides basic security capabilities such as:
 
--   Enabling encryption at rest
+- Enabling encryption at rest
 
--   Defining authorization policies
+- Defining authorization policies
 
--   White listing access to specific container instances
+- White listing access to specific container instances
 
 The Kubernetes project however
 [documented](https://kubernetes.io/docs/concepts/configuration/secret/#security-properties)
 several security risks affecting the built-in Kubernetes secrets
 mechanism, which users should pay attention to:
 
--   Securing etcd --- secret data is stored in etcd. By default, etcd data is not encrypted and neither are your secrets. You should enable encryption at rest, limit access to etcd to admin users only, and safely dispose of disks where etcd data was formerly stored.
+- Securing etcd --- secret data is stored in etcd. By default, etcd data is not encrypted and neither are your secrets. You should enable encryption at rest, limit access to etcd to admin users only, and safely dispose of disks where etcd data was formerly stored.
 
--   Users who consume a secret can see its value---any user who creates a pod that uses a secret has access to that secret, even if the API Server policy does not allow the user to view the secret.
+- Users who consume a secret can see its value---any user who creates a pod that uses a secret has access to that secret, even if the API Server policy does not allow the user to view the secret.
 
--   Root exploit --- anyone with root access on any node can read any secret, because they can impersonate the kubelet. Kubernetes does not currently send secrets on a "need to know" basis; it exposes secrets to anyone on any node with root access.
+- Root exploit --- anyone with root access on any node can read any secret, because they can impersonate the kubelet. Kubernetes does not currently send secrets on a "need to know" basis; it exposes secrets to anyone on any node with root access.
 
 ### Secret Management Tools
 
@@ -1300,16 +1297,16 @@ purpose-built for container workloads.
 
 Secret management solutions fall into two broad categories:
 
--   Cloud provider tools --- including [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/), [Google Cloud Platform KMS](https://cloud.google.com/kms/) and [Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)---help encrypt secrets within each cloud environment, automatically rotate secret values, manage access to secrets with policies, and perform central auditing of secrets.
+- Cloud provider tools --- including [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/), [Google Cloud Platform KMS](https://cloud.google.com/kms/) and [Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)---help encrypt secrets within each cloud environment, automatically rotate secret values, manage access to secrets with policies, and perform central auditing of secrets.
 
--   Open source tools --- [Hashicorp Vault](https://www.vaultproject.io/) provides secrets management and data protection, with advanced features like dynamic secrets, namespaces, leases, and revocation for secrets data. Other options are [CyberArk](https://www.conjur.org/) (with an open source version called [Conjur](https://www.conjur.org/)) and [Confidant](https://lyft.github.io/confidant/).
+- Open source tools --- [Hashicorp Vault](https://www.vaultproject.io/) provides secrets management and data protection, with advanced features like dynamic secrets, namespaces, leases, and revocation for secrets data. Other options are [CyberArk](https://www.conjur.org/) (with an open source version called [Conjur](https://www.conjur.org/)) and [Confidant](https://lyft.github.io/confidant/).
 
 To keep your micro-services secrets safe without compromising on security
 and automation
 
--   A secrets hierarchy design should address secrets isolation per application, environment and a fail-proof revocation of secrets when required.
+- A secrets hierarchy design should address secrets isolation per application, environment and a fail-proof revocation of secrets when required.
 
--   Access policies and role-based mappings need to be built to support emergencies by making them version controlled and automated.
+- Access policies and role-based mappings need to be built to support emergencies by making them version controlled and automated.
 
 ### Secret Rotation
 
@@ -1399,7 +1396,7 @@ such as dependency and credential scanning, which can help catch some
 security concerns. Additionally, many languages provide different levels
 of scanning which can be added to your CI process to ensure you are
 taking advantage of the features they make available. For example,
-Python offers the `pipenv check` command, and Ruby offers the `bundle audit` 
+Python offers the `pipenv check` command, and Ruby offers the `bundle audit`
 command. It is recommended to take a defense in depth approach
 when it comes to securing your source code and the resulting images used
 for deployments.
@@ -1423,7 +1420,7 @@ some checks.
 Sensitive information should not be stored in pod-type YAML resources
 (deployments, pods, sets, etc.), and sensitive configmaps and secrets
 should be encrypted with tools such as helm secret plugin,
-[git-crypt](https://github.com/AGWA/git-crypt), [sealed secrets](https://github.com/bitnami-labs/sealed-secrets), or 
+[git-crypt](https://github.com/AGWA/git-crypt), [sealed secrets](https://github.com/bitnami-labs/sealed-secrets), or
 [cloud provider KMS](https://cloud.google.com/kms/).
 
 Static analysis of YAML configuration can be used to establish a
@@ -1441,9 +1438,9 @@ order for the project to be successful. This includes Source code,
 scripts, test data, infrastructure and application configuration,
 libraries, packages, documentation, firewall rules, ...
 
--   Anything that is human readable goes in to the source code repository
+- Anything that is human readable goes in to the source code repository
 
--   All machine files go in to the artifact repository (binaries, docker images, RPM packages)
+- All machine files go in to the artifact repository (binaries, docker images, RPM packages)
 
 Infrastructure as Code (IaC) aims to define the desired state of a
 system as facts, not instructions. With your infra declared as states,
