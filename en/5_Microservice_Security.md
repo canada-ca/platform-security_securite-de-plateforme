@@ -1466,8 +1466,7 @@ projects like Crossplane and Google's Config Connector are applying this
 methodology to the fundamental architecture supporting the application
 deployment.
 
-References
-----------
+## References
 
 [https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-190.pdf](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-190.pdf)
 
