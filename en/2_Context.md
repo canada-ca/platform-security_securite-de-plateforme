@@ -73,7 +73,7 @@ The introduction of container technology adds another layer of abstraction that 
 
 The bulk of vulnerabilities exist within the base operating system. Accordingly, a patch to one base O/S can support as many containers as run on that O/S without impacting the containers. This benefit makes vulnerability management significantly easier in container-based deployments. Since containers themselves are often ephemeral, vulnerabilities found in containers (and images) can be mitigated by replacing with a non-vulnerable container.
 
-The increasing popularity of containers has led to the development of stripped down operating systems that include only the features required to host containers. These include CoreOS, RancherOS, Ubuntu Snappy, VMware Photon, Red Hat Atomic Host, and others. By stripping out unnecessary capabilities, these operating systems have a smaller attack service and are easier for administrators to maintain and update.
+The increasing popularity of containers has led to the development of stripped down operating systems that include only the features required to host containers. These include CoreOS, RancherOS, Ubuntu Snappy, VMware Photon, Red Hat Atomic Host, and others. By stripping out unnecessary capabilities, these operating systems have a smaller attack surface and are easier for administrators to maintain and update.
 
 ## 2.5 Microservices
 
