@@ -816,7 +816,7 @@ queries.
 
 #### Improper Asset Management
 
-Lack of APIs inventory and depreciation strategies leads to running
+Lack of APIs inventory and deprecation strategies leads to running
 unpatched APIs, resulting in leakage of sensitive data. Attackers may
 gain access to sensitive data, or even take over the server through old,
 unpatched API versions connected to the same database.
