@@ -151,7 +151,7 @@ consideration.
 
 ![The image contains an outer rectangle labelled 'Cluster', with two
 rectangles inside that, each called 'Node'. The first Node contains a
-three-dimensional disk labelled 'etcd', and a dashed-border rectangle
+three-dimensional disc, or low cylinder, labelled 'etcd', and a dashed-border rectangle
 labelled 'Control-plane components'. There are arrows pointing to each
 object, with additional messaging attached to each arrow: 'Access to machines/VMs' points to Node; 'Access via Kubernetes API or Proxy' points to 'Control-plane components'; 'Access to etcd API' points to 'etcd'; and 'Intercept/modify/inject control-plane traffic' points to the inside of the Control-plane components. All of the above arrows are black, except the Intercept/modify/inject arrow, which is red.
 The second Node contains a rectangle labelled 'Kubelet', and another rectangle
