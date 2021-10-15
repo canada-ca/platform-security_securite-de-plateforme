@@ -39,10 +39,10 @@ application components: VMs, and Containers. Both diagrams
  start with a large rectangle at the bottom labeleled 'Infrastructure'.  
  Then, above that,a smaller rectangle labelled 'Hypervisor' on the VMs side,
  and 'Operating system' on the Containers side. Then, above that on the
- Containers side is a "Container Engine", and then multiple sets of smaller
+ Containers side is a 'Container Engine', and then multiple sets of smaller
   rectangles above that for Bins/Lib 1 to n and above each one of those,
   corresponding 'App' 1 to n. That completes the Containers side.
-  On the VMs side, instead of the Container Engine, there is "Guest OS" 1 to
+  On the VMs side, instead of the Container Engine, there is 'Guest OS' 1 to
   n, and then the rest of the diagram above that is the same as the one for
   Containers, with 'Bins/Lib' and 'App' 1 to n.](../media/image_13.png)
 
