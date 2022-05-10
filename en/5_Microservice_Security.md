@@ -34,7 +34,17 @@ internet, so I am not going to rehash everything here. As a simple
 illustration, the following diagram shows the components of an
 application as it relates to either VMs or containers.
 
-![](../media/image_13.png)
+![The image depicts a comparison between two sets of
+application components: VMs, and Containers. Both diagrams
+ start with a large rectangle at the bottom labeleled 'Infrastructure'.  
+ Then, above that,a smaller rectangle labelled 'Hypervisor' on the VMs side,
+ and 'Operating system' on the Containers side. Then, above that on the
+ Containers side is a 'Container Engine', and then multiple sets of smaller
+  rectangles above that for Bins/Lib 1 to n and above each one of those,
+  corresponding 'App' 1 to n. That completes the Containers side.
+  On the VMs side, instead of the Container Engine, there is 'Guest OS' 1 to
+  n, and then the rest of the diagram above that is the same as the one for
+  Containers, with 'Bins/Lib' and 'App' 1 to n.](../media/image_13.png)
 
 Ref:
 [https://blog.netapp.com/blogs/containers-vs-vms/](https://blog.netapp.com/blogs/containers-vs-vms/)
@@ -139,7 +149,14 @@ different ways to manage application scheduling and isolation to help
 you understand what placement rules your application should take into
 consideration.
 
-![](../media/image_2.png)
+![The image contains an outer rectangle labelled 'Cluster', with two
+rectangles inside that, each called 'Node'. The first Node contains a
+three-dimensional disc, or low cylinder, labelled 'etcd', and a dashed-border rectangle
+labelled 'Control-plane components'. There are arrows pointing to each
+object, with additional messaging attached to each arrow: 'Access to machines/VMs' points to Node; 'Access via Kubernetes API or Proxy' points to 'Control-plane components'; 'Access to etcd API' points to 'etcd'; and 'Intercept/modify/inject control-plane traffic' points to the inside of the Control-plane components. All of the above arrows are black, except the Intercept/modify/inject arrow, which is red.
+The second Node contains a rectangle labelled 'Kubelet', and another rectangle
+ labelled 'Pod'. Inside the Pod is a 'Container' rectangle, and inside that,
+ an 'Application' rectangle. These objects have arromediaws as well: - 'Access via Kuelet API' is a black arrow pointing at the Kubelet rectangle; - a red arrow points from Application to some text: 'Escape  container to host through vulnerability or volume mount';- another red arrow points from 'Intercept/modify/inject application traffic' to Application; and - a final, black, arrow points from 'Exploit vulnerability in application code' to Application.](../media/image_2.png)  ds
 
 ### Workload Scheduling & Placement
 
@@ -241,7 +258,10 @@ RoleBinding and ClusterRoleBinding behave the same, but in different
 contexts. A RoleBinding associates a user with a role and a context
 (namespace or cluster).
 
-![](../media/image_8.png)
+![The image depicts two rectangles, one labelled 'Namespace', containing a
+'Role' rectangle pointing to a 'RoleBinding' rectangle, and the other labelled
+'Cluster', containing a 'ClusterRole' rectangle pointing to a 'ClusterRoleBinding'
+rectangle.](../media/image_8.png)
 
 ### Service Mesh
 
