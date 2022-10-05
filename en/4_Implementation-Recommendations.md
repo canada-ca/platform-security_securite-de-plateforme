@@ -1,5 +1,7 @@
 # 4. Implementation Recommendations
 
+([Back](../README.md))
+
 The following are general recommendations for securing containers and Kubernetes.
 
 ## 4.1 Host Recommendations
@@ -7,18 +9,18 @@ The following are general recommendations for securing containers and Kubernetes
 The following are recommendations for securing the host:
 
 1. Run docker engine with flags per [CIS Docker Community Edition Benchmark](https://www.cisecurity.org/benchmark/docker/): v1.1.0 and NIST Special Publication 800-190 [\[6\]](5_References.md).
-2. Check for compliance by running [docker-bench](https://github.com/docker/docker-bench-security) against the host. Flags can also be found in the *Security Controls Mapping to Docker and Kubernetes* document available on GCpedia.
+2. Check for compliance by running [docker-bench](https://github.com/docker/docker-bench-security) against the host. Flags can also be found in the _Security Controls Mapping to Docker and Kubernetes_ document available on GCpedia.
 3. Other high-level recommendations for hosts include:
-    - Enabling AppArmour or SeLinux on hosts (per host instructions)
-    - OWASP Version control Package testing
-    - Vulnerability checking (based on CVE scores, scanned in dev, CI/CD, prod)
-    - Control parameters (flags)
-    - Use linux namespaces
-    - Utilize Seccomp/seccomp-bpf [^4]
-    - Configure Cgroups
-    - Use R/O Mounts
-    - Update host patches
-    - Run CIS Benchmark security tests [\[14\]](5_References.md)
+   - Enabling AppArmour or SeLinux on hosts (per host instructions)
+   - OWASP Version control Package testing
+   - Vulnerability checking (based on CVE scores, scanned in dev, CI/CD, prod)
+   - Control parameters (flags)
+   - Use linux namespaces
+   - Utilize Seccomp/seccomp-bpf [^4]
+   - Configure Cgroups
+   - Use R/O Mounts
+   - Update host patches
+   - Run CIS Benchmark security tests [\[14\]](5_References.md)
 
 ## 4.2 Image Builds
 
@@ -66,4 +68,4 @@ As the number of containers in organizations increases, DevSecOps teams recogniz
   - [Tutorials and Recipes for Kubernetes Network Policies feature](https://github.com/ahmetb/kubernetes-network-policy-recipes)
   - [Limiting Pod Communication with Network Policies](https://docs.giantswarm.io/guides/limiting-pod-communication-with-network-policies/)
 
-Further details can be found in accompanying *GC Guidance for Secure Platform Deployment* and other resources, such as the Ultimate Guide to Kubernetes Security [\[13\]](5_References.md), kubernetes.io [\[17\]](5_References.md), Exploring Container Security: An Overview [\[18\]](5_References.md) and NIST Special Publication 800-190 Application Container Security Guide [\[6\]](5_References.md).
+Further details can be found in accompanying _GC Guidance for Secure Platform Deployment_ and other resources, such as the Ultimate Guide to Kubernetes Security [\[13\]](5_References.md), kubernetes.io [\[17\]](5_References.md), Exploring Container Security: An Overview [\[18\]](5_References.md) and NIST Special Publication 800-190 Application Container Security Guide [\[6\]](5_References.md).

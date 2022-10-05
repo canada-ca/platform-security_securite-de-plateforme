@@ -1,10 +1,12 @@
 # 6. References
 
-  -- --
+([Back](../README.md))
+
+---
 
 \[1\] Pivotal, \"Essential Hacks: Developing Microservices for PaaS,\" \[Online\]. Available: <https://solutionsreview.com/cloud-platforms/microservices-hacks/>.
 
-\[2\] N. Q. P. Kratzke, \"Understanding Cloud-native Applications after 10 Years of Cloud Computing - A Systematic Mapping Study,\" *Journal of Systems and Software ,* vol. 126, no. April, p. 1--16, 2017.
+\[2\] N. Q. P. Kratzke, \"Understanding Cloud-native Applications after 10 Years of Cloud Computing - A Systematic Mapping Study,\" _Journal of Systems and Software ,_ vol. 126, no. April, p. 1--16, 2017.
 
 \[3\] Cloudops, \"Serverless Computing,\" \[Online\]. Available: <https://www.cloudops.com/2018/02/serverless-computing-hot-or-not-2/>.
 
@@ -40,12 +42,9 @@
 
 \[19\] Google, \"Open-sourcing gVisor, a sandboxed container runtime,\" May 2018. \[Online\]. Available: <https://cloudplatform.googleblog.com/2018/05/Open-sourcing-gVisor-a-sandboxed-container-runtime.html>.
 
-  -- --
+---
 
 [^1]: Recently sandboxed containers provide a secure isolation boundary between host OS and image, such as Kata Containers, vSphere Integrated Containers and gVisor \[19\]
-
 [^2]: Note that two definitions of "orchestration" in use. Business process orchestration directs the execution of a business process. Container orchestration (also known as container scheduling) directs the deployment and redeployment of containers to meet demand and performance requirements.
-
 [^3]: An individual microservice may have a small attack surface, but a collection of microservices is likely to have a larger attack surface than a monolithic application that provides the same set of functions.
-
 [^4]: A very recent networking addition is the replacement of iptables with Berkeley Packet Filter (BPF), often implemented with Cilium. Open source and CNI-compatible Cilium brings API-aware network security filtering to Linux container frameworks.

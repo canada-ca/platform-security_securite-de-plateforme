@@ -1,11 +1,13 @@
 # 2. Context
 
+([Back](../README.md))
+
 ## 2.1 Definitions
 
 Containers and orchestrators support cloud native deployments of distributed systems, often based on microservice architecture as depicted in Figure 2-1.
 
 ![Figure 2-1](../media/image2.png)
-*Figure 2‑1 Monolithic versus Microservice [\[1\]](5_References.md)*
+_Figure 2‑1 Monolithic versus Microservice [\[1\]](5_References.md)_
 
 - **Microservices** are applications written as blocks of code and interconnected via API's. Based on architectural principles such as [Domain Driven Design (DDD)](https://www.thoughtworks.com/insights/blog/domain-driven-design-services-architecture), [12-factor Apps](https://12factor.net/) and Cloud Native Architecture (Infrastructure as code) microservice applications most often use containers, orchestrators and, more recently, functions as a service (serverless).
 - **Containers** are portable environments containing application code, associated libraries and dependencies. Developers use build pipelines to create and deploy containerized applications, test and QA in development environments and ship as services to production using package managers and orchestration tools, such as Kubernetes (both managed and hosted). The primary goal of a container is to provide a standardized set of virtual resources to an application process that are separated from the virtual resources provided to other containers deployed on the same platform. The virtual resources are provided based on container configuration information. Virtual resources can also be shared by groups of containers. This allows a container to be deployed and run on any compatible platform regardless of the underlying operating system.
@@ -15,7 +17,7 @@ Containers and orchestrators support cloud native deployments of distributed sys
 
 ![Virtual Machines, Containers, Serverless Architecture](../media/image3.jpeg)
 
-*Figure 2‑2 [High-level overview of VM's, containers, and serverless](https://www.cloudops.com/2018/02/serverless-computing-hot-or-not-2/) [\[3\]](5_References.md)*
+_Figure 2‑2 [High-level overview of VM's, containers, and serverless](https://www.cloudops.com/2018/02/serverless-computing-hot-or-not-2/) [\[3\]](5_References.md)_
 
 Figure 2‑3 below depicts the shared responsibility model and concept of managed and hosted cloud services as it relates to containers. This includes:
 
@@ -23,7 +25,7 @@ Figure 2‑3 below depicts the shared responsibility model and concept of manage
 - **Hosted** means both the control and data planes are managed by the GC, regardless who manage the infrastructure underneath. For example, deploying Kubernetes on EC2 or on-premise compute.
 
 ![Figure 2-3](../media/image4.png)
-*Figure 2‑3 Shared Responsibility Model with Containers*
+_Figure 2‑3 Shared Responsibility Model with Containers_
 
 ## 2.2 Infrastructure
 
@@ -31,26 +33,26 @@ Constrainers, kubernetes and (despite the name) serverless, all run on virtual m
 
 ## 2.3 Containers
 
-One of the trends outlined in the in the *Enterprise Security Architecture Description Document Annex E -- Application Security (APP)* [\[4\]](5_References.md) and the *Enterprise Security Architecture Description Document Annex F -- Compute and Storage Services Security (CSS)* [\[5\]](5_References.md) is the use of containers.
+One of the trends outlined in the in the _Enterprise Security Architecture Description Document Annex E -- Application Security (APP)_ [\[4\]](5_References.md) and the _Enterprise Security Architecture Description Document Annex F -- Compute and Storage Services Security (CSS)_ [\[5\]](5_References.md) is the use of containers.
 
 The introduction of cloud services and the adoption of "continuous deployment" of software services has resulted in the movement of applications from one environment to another (Data Centre \<-\> Public Cloud) and within an environment was required to be agile and predictable. Container technology (OS virtualization) enables software to deploy quickly and run predictably when moved from one environment to another.
 
 ![Figure 2-4](../media/image5.jpeg)
-*Figure 2‑4 Container Technologies*
+_Figure 2‑4 Container Technologies_
 
 As depicted in Figure 2‑4 containers sit on top of a physical or virtualized server and its OS. Each container shares the host OS kernel and the OS binaries and libraries. Shared components are read-only, with each container able to be written to through a unique mount. This makes containers exceptionally "light" -- containers can be megabytes in size and take just seconds to start, versus minutes for a VM. Table 2‑1 provides a list of quality attributes associated with virtualization and container technologies in a modern data center environment.
 
 **Table** **2‑1 Virtualization and Container Quality Attributes**
 
-| **Quality Attributes**      | **Virtualization Technology**           | **Container Technology** |
-| --------------------------- | --------------------------------------- | ------------------------------------------------------- |
-| Technology code base size   | 2-3 Gigabytes                           | 20-90 MB's |
-| Provisioning                | 2-3 minutes                             | 2-3 seconds |
-| Cost                        | More costly than container technology   | Less servers, Less Staff |
-| Resource utilization        | High                                    | Low |
-| DevOps Integration          | Difficult, time consuming               | Easy |
-| Microservices               | No advantage                            | Lightweight containers are suitable for microservices |
-| Continuous Deployment       | Difficult, time consuming               | Containers deploy in seconds |
+| **Quality Attributes**    | **Virtualization Technology**         | **Container Technology**                              |
+| ------------------------- | ------------------------------------- | ----------------------------------------------------- |
+| Technology code base size | 2-3 Gigabytes                         | 20-90 MB's                                            |
+| Provisioning              | 2-3 minutes                           | 2-3 seconds                                           |
+| Cost                      | More costly than container technology | Less servers, Less Staff                              |
+| Resource utilization      | High                                  | Low                                                   |
+| DevOps Integration        | Difficult, time consuming             | Easy                                                  |
+| Microservices             | No advantage                          | Lightweight containers are suitable for microservices |
+| Continuous Deployment     | Difficult, time consuming             | Containers deploy in seconds                          |
 
 The benefits of containers often derive from their speed and lightweight nature; many more containers can be put onto a server than onto a traditional VM. Containers are "shareable" and can be used on a variety of public and private cloud deployments, accelerating DevOps by quickly packaging software services along with their dependencies. Additionally, containers reduce management overhead. Because they share a common operating system, only a single operating system needs care and feeding (bug fixes, patches, etc.). [^1]
 
@@ -69,7 +71,7 @@ OS containers are beneficial when a fleet of identical or different flavors of s
 
 ## 2.4 Container Security
 
-The introduction of container technology adds another layer of abstraction that must be secured. This begins by configuring the container runtime (i.e. docker engine) with specific flags found in the CIS Docker Benchmark where possible. Running these flags harden the Docker engine and kubernetes Master and Workers (API Server and nodes) based on the NIST Special Publication 800-190 [\[6\]](5_References.md). A matrix has been developed that provides a mapping of controls and container components in the *Security Controls Mapping to Docker and Kubernetes* [\[7\]](5_References.md) document and provides specific flags as well as open-source tools to assist with compliance. Additionally, DevOps and container orchestration services may be compromised providing opportunities for exploitation. Sophisticated attackers will look to exploit new container services and the tools that support those services.
+The introduction of container technology adds another layer of abstraction that must be secured. This begins by configuring the container runtime (i.e. docker engine) with specific flags found in the CIS Docker Benchmark where possible. Running these flags harden the Docker engine and kubernetes Master and Workers (API Server and nodes) based on the NIST Special Publication 800-190 [\[6\]](5_References.md). A matrix has been developed that provides a mapping of controls and container components in the _Security Controls Mapping to Docker and Kubernetes_ [\[7\]](5_References.md) document and provides specific flags as well as open-source tools to assist with compliance. Additionally, DevOps and container orchestration services may be compromised providing opportunities for exploitation. Sophisticated attackers will look to exploit new container services and the tools that support those services.
 
 The bulk of vulnerabilities exist within the base operating system. Accordingly, a patch to one base O/S can support as many containers as run on that O/S without impacting the containers. This benefit makes vulnerability management significantly easier in container-based deployments. Since containers themselves are often ephemeral, vulnerabilities found in containers (and images) can be mitigated by replacing with a non-vulnerable container.
 
@@ -84,7 +86,7 @@ The emerging architectural concept to meet this need is the concept of "microser
 The traditional concept of an "application" may no longer be applicable in an enterprise environment; instead, microservices may be mixed and matched as needed to meet an organization's specific operational and business requirements. A high-level view of the microservice architecture is shown in Figure ‎2‑5 [\[4\]](5_References.md).
 
 ![Figure 2-5](../media/image6.png)
-*Figure ‎2‑5 Microservices Architecture (MSA)*
+_Figure ‎2‑5 Microservices Architecture (MSA)_
 
 With orchestration, a single orchestrator [^2] "conducts" the microservices, telling them what to do and when. Each microservice responds to requests in a synchronous manner and has no knowledge of the larger business process in which it is participating. With choreography, microservices are aware of the business processes of which they are a part. In an event-driven choreography scheme [\[9\]](5_References.md), when a microservice completes a step in a business process, it posts an asynchronous event. At that point, the next microservice in the business process detects the event, performs its step, and posts another event. Both orchestration and choreography allow steps to be performed in parallel. A decentralized asynchronous approach generally provides looser coupling (which better supports small independent DevOps teams) but has poor or no support for transactions. If a transaction cannot be completed for any reason, the microservices must coordinate with each other to identify and resolve any inconsistencies rather than relying on a centralized, synchronous orchestrator to implement a two-phase commit (2PC) protocol [\[10\]](5_References.md). The end user may also be actively involved in ensuring the consistency and integrity of all services and their associated databases. In practice, an MSA-based system is likely use a combination of choreography and orchestration with one or more microservices performing orchestration functions (i.e., there is no dedicated orchestrator typically present in a traditional SOA).
 
@@ -180,7 +182,7 @@ Another benefit of microservices is the ability to code and maintain each servic
 
 Though each microservice is part of a large, composite application, from a developer standpoint, it is important to treat each service as an independent unit of code. Each service needs to be versioned and maintained separately in the source code control system. This makes it possible to deploy newer versions of services without disrupting the application. CI/CD pipelines should be designed to take advantage of the independent versioning.
 
-This mechanism makes it possible to implement blue/green testing of each service before rolling out the production version.  
+This mechanism makes it possible to implement blue/green testing of each service before rolling out the production version.
 
 ### 2.5.2 Service Mesh
 
@@ -190,7 +192,7 @@ A recent example with Istio deployed as a 'sidecar' in Kubernetes, supporting po
 
 ![BookInfo-v1-Istio (5).png](../media/image7.png)
 
-*Figure ‎2‑6 Example service mesh (CNCF Project Istio) [\[12\]](5_References.md)*
+_Figure ‎2‑6 Example service mesh (CNCF Project Istio) [\[12\]](5_References.md)_
 
 Functions of a service mesh:
 
