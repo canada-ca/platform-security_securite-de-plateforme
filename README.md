@@ -1,6 +1,6 @@
-([Français](#gabarit-pour-dépôts-de-code-source-ouvert-du-gouvernement-du-canada))
+# Guidance on Secure Containers and Microservices
 
-## Guidance on Secure Containers and Microservices
+([Français](#gabarit-pour-dépôts-de-code-source-ouvert-du-gouvernement-du-canada))
 
 With the introduction of cloud services and the adoption of “continuous deployment” of software services, the movement of applications from one environment to another and within an environment is required to be agile and predictable. Container technology (OS virtualization) enables software to deploy quickly and run predictably when moved from one environment to another. Further, microservices are established when a set of containers work together to compose an application. While this approach improves flexibility and scalability for application development and simplifies functionality, it adds another layer of abstraction that must be secured.
 
@@ -38,7 +38,7 @@ This guidance provides recommendations to secure containers and microservices wh
   - [5.7 Observability](en/5_Microservice_Security.md#57-observability)
   - [5.8 Secrets Management](en/5_Microservice_Security.md#58-secrets-management)
   - [5.9 Continuous Integration/Continuous Deployment (CI/CD)](en/5_Microservice_Security.md#59-continuous-integrationcontinuous-deployment-cicd)
-  - [5.10 Infrastructure as Code](en/5_Microservice_Security.md#510-infrastructure-as-code)  
+  - [5.10 Infrastructure as Code](en/5_Microservice_Security.md#510-infrastructure-as-code)
 - [6. References](en/6_References.md)
 
 ## List of Tables
@@ -56,34 +56,34 @@ This guidance provides recommendations to secure containers and microservices wh
 
 ## List of Abbreviations and Acronyms
 
-| Abbreviation | Definition |
-| --------- | ---------------------------------------------------- |
-| CIRT      | Computer Incident Response Team |
-| CONOPS    | Concept of Operations |
-| CSE       | Communications Security Establishment |
-| CS EMP    | Cyber Security Event Management Plan |
-| CSP       | Cloud Service Provider |
-| FedRAMP   | Federal Risk and Authorization Management Program |
-| GC        | Government of Canada |
-| GSRM      | Government of Canada Strategic Reference Model |
-| IaaS      | Infrastructure as a Service |
-| IPC       | Information Protection Centre |
-| IT        | Information Technology |
-| ITSG      | Information Technology Security Guidance |
-| LAN       | Local Area Network |
-| NIST      | National Institute of Standard and Technology |
-| PAA       | Program Alignment Architecture |
-| PaaS      | Platform as a Service |
-| PBMM      | Protected B, Medium Integrity, Medium Availability |
-| PIA       | Privacy Impact Assessment |
-| PoAM      | Plan of Actions and Milestones |
-| RACI      | Responsible, Accountable, Consulted, Informed |
-| SaaS      | Software as a Service |
-| SDLC      | System Development Lifecycle |
-| SLA       | Service Level Agreement |
-| SSC       | Shared Services Canada |
-| TBS       | Treasury Board of Canada Secretariat |
-| ULL       | Unclassified, Low Integrity, Low Availability |
+| Abbreviation | Definition                                         |
+| ------------ | -------------------------------------------------- |
+| CIRT         | Computer Incident Response Team                    |
+| CONOPS       | Concept of Operations                              |
+| CSE          | Communications Security Establishment              |
+| CS EMP       | Cyber Security Event Management Plan               |
+| CSP          | Cloud Service Provider                             |
+| FedRAMP      | Federal Risk and Authorization Management Program  |
+| GC           | Government of Canada                               |
+| GSRM         | Government of Canada Strategic Reference Model     |
+| IaaS         | Infrastructure as a Service                        |
+| IPC          | Information Protection Centre                      |
+| IT           | Information Technology                             |
+| ITSG         | Information Technology Security Guidance           |
+| LAN          | Local Area Network                                 |
+| NIST         | National Institute of Standard and Technology      |
+| PAA          | Program Alignment Architecture                     |
+| PaaS         | Platform as a Service                              |
+| PBMM         | Protected B, Medium Integrity, Medium Availability |
+| PIA          | Privacy Impact Assessment                          |
+| PoAM         | Plan of Actions and Milestones                     |
+| RACI         | Responsible, Accountable, Consulted, Informed      |
+| SaaS         | Software as a Service                              |
+| SDLC         | System Development Lifecycle                       |
+| SLA          | Service Level Agreement                            |
+| SSC          | Shared Services Canada                             |
+| TBS          | Treasury Board of Canada Secretariat               |
+| ULL          | Unclassified, Low Integrity, Low Availability      |
 
 ### How to Contribute
 
@@ -95,7 +95,7 @@ Unless otherwise noted, the source code of this project is covered under Crown C
 
 The Canada wordmark and related graphics associated with this distribution are protected under trademark law and copyright law. No permission is granted to use them outside the parameters of the Government of Canada's corporate identity program. For more information, see [Federal identity requirements](https://www.canada.ca/en/treasury-board-secretariat/topics/government-communications/federal-identity-requirements.html).
 
-______________________
+---
 
 ## Gabarit pour dépôts de code source ouvert du gouvernement du Canada
 
