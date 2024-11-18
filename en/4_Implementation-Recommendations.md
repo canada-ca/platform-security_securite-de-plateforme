@@ -38,7 +38,7 @@ A sample of specific image build considerations include:
 | **Hardening** | <ul>Harden the Docker engine by implementing CIS Docker Benchmark flags for improved security.</ul> |
 | **Patching Base OS** | <ul>Can secure all containers running on the same host.</ul>|
 | **Container-specific Host OS** | <ul>Consider using a container-specific Host OS like [CoreOS](https://fedoraproject.org/coreos/), [RancherOS](https://rancher.com/docs/os/v1.x/en/), etc. for a smaller attack surface and easier management. </ul>|
-| **Labels, Tags, (Not LATEST)** | <ul><li>Use labels and tags to identify the image and version.</li><li>Use [semantic versioning](https://semver.org/) (e.g. `v1.0.0`).</li><li>Don't use `latest`.</li></ul> |,
+| **Labels, Tags, (Not LATEST)** | <ul><li>Use labels and tags to identify the image and version.</li><li>Use [semantic versioning](https://semver.org/) (e.g. `v1.0.0`).</li><li>Don't use `latest`.</li></ul> |
 | **Cryptographic Signing** | <ul>Use cryptographic signing for image verification.</ul>  |
 | **Best Practices** | <ul>Follow general `Dockerfile` best practices (such as specifying commands in the same line to reduce layers in image)</ul> |
 
