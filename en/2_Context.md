@@ -11,7 +11,7 @@ Containers and orchestrators support cloud native deployments of distributed sys
 ![Figure 2-1](../media/image_1.png)
 _Figure 2‑1 Monolithic versus Microservice_
 
-- **Microservices** are loosely-coupled applications written as blocks of functionality interconnected via lightweight communication protocols, such as RESTful API's. 
+- **Microservices** are loosely-coupled applications written as blocks of functionality interconnected via lightweight communication protocols, such as RESTful API's.
 
     Based on architectural principles such as [Domain Driven Design (DDD)](https://www.thoughtworks.com/insights/blog/domain-driven-design-services-architecture), [12-factor Apps](https://12factor.net/) and Cloud Native Architecture (Infrastructure as code) microservice applications most often use containers, orchestrators and, more recently, functions as a service (serverless).
 - **Containers** are portable computing environments containing pre-built applications, associated libraries and dependencies, and configuration that keeps them independent from the host environment and other containers.
@@ -35,7 +35,7 @@ _Figure 2‑3 Shared Responsibility Model with Containers_
 
 ## 2.2 Infrastructure
 
-Constrainers, Kubernetes, and serverless computing, all run on virtual machines (VMs) or physical servers. It is important to harden hosts on which the container runtime resides, including container engines, Kubernetes nodes and pods, and serverless functions, based on current GC security best-practices. For managed infrastructure or services, security best-practices are partially inherited from cloud service providers (CSPs) with the remaining implemented by the tenant (GC organization) on the resource, also know as the ***Shared Responsibility Model***.
+Constrainers, Kubernetes, and serverless computing, all run on virtual machines (VMs) or physical servers. It is important to harden hosts on which the container runtime resides, including container engines, Kubernetes nodes and pods, and serverless functions, based on current GC security best-practices. For managed infrastructure or services, security best-practices are partially inherited from cloud service providers (CSPs) with the remaining implemented by the tenant (GC organization) on the resource, also know as the _**Shared Responsibility Model**_.
 
 ## 2.3 Containers
 
@@ -54,7 +54,6 @@ As depicted in Figure 2‑4 containers sit on top of a physical or virtualized s
 | **Isolation** | Containers are isolated from each other and the host OS. |
 | **Portability** | Containers can be moved from one environment to another. |
 | **Resource Efficiency** | Containers share the host OS kernel and patches/updates, reducing management burden. |
-
 
 ## 2.4 Container Security
 
@@ -82,8 +81,7 @@ For DevOps to be effective, code must decomposed into small, loosely coupled ser
 
 A system based on the Microservices Architecture (MSA) pattern should be comprised of a set of microservices, each of which has a single responsibility that it should perform it reliably, and effectively.
 
-The following is a summary of the ***10 Microservices Design Principles That Every Developer Should Know*** [found here](https://www.geeksforgeeks.org/10-microservices-design-principles-that-every-developer-should-know/):
-
+The following is a summary of the _**10 Microservices Design Principles That Every Developer Should Know**_ [found here](https://www.geeksforgeeks.org/10-microservices-design-principles-that-every-developer-should-know/):
 
 | MSA Feature | Description |
 | --- | --- |
@@ -115,10 +113,9 @@ The following is a set of features of container orchestration and choreography:
 | **Choreography** | In choreography, microservices possess an understanding of the encompassing business processes they participate in. |
 | **Service Mesh** | A service mesh is a dedicated infrastructure layer for handling service-to-service communication. It provides a way to control how different parts of an application share data with one another. |
 
-
 ### Challenges
-The proliferation of small services that result from a microservices architecture results in a number of security challenges that must be addressed.
 
+The proliferation of small services that result from a microservices architecture results in a number of security challenges that must be addressed.
 
 | Challenge | Description |
 | --- | --- |
@@ -127,17 +124,14 @@ The proliferation of small services that result from a microservices architectur
 | **Diverse OSs and Programming Languages** | Microservices deployments rely on a wide range of OSs and programming languages, each with unique security vulnerabilities. |
 | **Network Traffic** | Microservices result in a lot of network traffic, which may result in poor response times due to bandwidth constraints and increased latency. |
 
-
 ### Benefits
-Some upsides of a microservice approach include:
 
+Some upsides of a microservice approach include:
 
 | Upside | Description |
 | --- | --- |
 | **Rapid Security Updates** | Security updates to microservices can be deployed more rapidly than for monolithic services with complex code dependencies. |
 | **Easier Evaluation** | Microservices are easier to evaluate from a security perspective than monolithic services. |
-
-
 
 ### 2.5.2 Service Mesh
 
@@ -151,7 +145,6 @@ A service mesh is an infrastructure layer in your application that facilitates c
 | **Metrics Collection** | Metrics collection is used to collect and analyze data on the performance of microservices. |
 | **Authentication** | Authentication is used to verify the identity of users and services. |
 | **Network Separation** | Network separation is used to separate the network traffic of different services. |
-
 
 Functions of a service mesh include:
 
@@ -176,18 +169,16 @@ Since an event-driven compute instance, such as in FaaS, does not exist until in
 
 The following are some of the key features of FaaS:
 
-
 | Feature | Description |
 | --- | --- |
 | **Security for Serverless Functions** | Security for serverless functions use centers on code classification, IAM policies, and data-at-rest protection because the functions remain inactive until executed. <br><br>Active functions use zoning and access controls implemented through IAM, CSP policy, and external security brokers. As they evolve, serverless functions will receive controls from CSP compliance reports. |
 | **Security for Invoked Serverless Functions** | Securing serverless functions involves considerations such as IAM policies, security groups, third-party and CSP-provided security brokers, and authentication, authorization, and integrity checks. |
 | **Function-Based Serverless Deployment** | Function-based serverless deployments are fully managed by the CSP. Examples include [Azure Functions](https://azure.microsoft.com/en-us/services/functions), [AWS Lambda](https://aws.amazon.com/lambda),  and [Google Cloud Functions](https://cloud.google.com/functions). |
 | **Container-Based Serverless Deployments** | Container security brokers offer protections for containers as a service (CaaS) environments. Examples include [Microsoft's Azure Containers Instances (ACI)](https://azure.microsoft.com/en-us/products/container-instances), [AWS Fargate](https://aws.amazon.com/fargate/), and [Google Cloud Run](https://cloud.google.com/run). Protection comes from runtime security policies enforced by either the CSP or container security brokers. |
-| **Securing Functions and Containers in Managed Services** | Safeguarding requires a security perimeter constructed using a resource group, a container frontend, and container image cryptographic signing. | 
+| **Securing Functions and Containers in Managed Services** | Safeguarding requires a security perimeter constructed using a resource group, a container frontend, and container image cryptographic signing. |
 | **Toolchains for Serverless Functions** | New capabilities to simplify the FaaS deployment model are being introduced frequently. Testing frameworks, dependency and vulnerability scanning, deployment, and infrastructure as code (IaC) are all part of these toolchains.|
 
 Regardless of deployment method, runtime monitoring is required for:
-
 
 - Detection of abnormal behaviour from the baseline, leveraging syscalls, network calls and other available information
 - Remediation of a potential threat, for example, via container isolation on a different network, pausing the container, or restarting it

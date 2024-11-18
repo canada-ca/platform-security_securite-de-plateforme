@@ -13,7 +13,6 @@ The following are recommendations for securing the host:
 
 3. While the benchmarks are the primary reference, consider these additional security best practices:
 
-
 | Best Practice | Description |
 | --- | --- |
 | **Container Runtime Security** | <ul>Enable security features like [`AppArmor`](https://www.apparmor.net/) or `SELinux` on your containers for additional protection. </uL>|
@@ -21,7 +20,6 @@ The following are recommendations for securing the host:
 | **Network Security** | <ul>Implement network segmentation, firewalls, and intrusion detection systems (IDS) to protect container networks. <ul>|
 | **Least Privilege** | <ul>Enforce the [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) by granting containers only the minimum permissions they require to function. </ul>|
 | **Monitoring and Logging** | <ul>Continuously monitor your container environment for suspicious activity and maintain detailed logs for forensic analysis.</ul> |
-    
 
 By embracing established security benchmarks and implementing best practices, you can significantly enhance the security posture of your containerized applications and Kubernetes deployments.
 
@@ -31,25 +29,22 @@ Containers are comprised of layered images specified in a `Dockerfile`, which in
 
 This starts by using trusted and optimized images with no (major) CVE vulnerabilities; and using only trusted versions and registries (trusted dependencies, signed images, secure and trusted registries). For some builds (i.e. `FROM golang`), consider a multi-stage build to reduce size, unnecessary libraries, and vulnerabilities.
 
-Organizations should evolve established processes to better fit containerized application build and deployment. 
+Organizations should evolve established processes to better fit containerized application build and deployment.
 
 A sample of specific image build considerations include:
-
 
 | Consideration | Description |
 | --- | --- |
 | **Hardening** | <ul>Harden the Docker engine by implementing CIS Docker Benchmark flags for improved security.</ul> |
 | **Patching Base OS** | <ul>Can secure all containers running on the same host.</ul>|
 | **Container-specific Host OS** | <ul>Consider using a container-specific Host OS like [CoreOS](https://fedoraproject.org/coreos/), [RancherOS](https://rancher.com/docs/os/v1.x/en/), etc. for a smaller attack surface and easier management. </ul>|
-| **Labels, Tags, (Not LATEST)** | <ul><li>Use labels and tags to identify the image and version.</li><li>Use [semantic versioning](https://semver.org/) (e.g. `v1.0.0`).</li><li>Don't use `latest`.</li></ul> |, 
+| **Labels, Tags, (Not LATEST)** | <ul><li>Use labels and tags to identify the image and version.</li><li>Use [semantic versioning](https://semver.org/) (e.g. `v1.0.0`).</li><li>Don't use `latest`.</li></ul> |,
 | **Cryptographic Signing** | <ul>Use cryptographic signing for image verification.</ul>  |
 | **Best Practices** | <ul>Follow general `Dockerfile` best practices (such as specifying commands in the same line to reduce layers in image)</ul> |
-
 
 ## 4.3 Container Deployment Security
 
 Container deployment can introduce security risks if not properly managed. To mitigate these risks, organizations should consider the following best practices:
-
 
 | Best Practice | Description |
 | --- | --- |
@@ -59,11 +54,9 @@ Container deployment can introduce security risks if not properly managed. To mi
 | **Use Secrets Management Tools** | <ul>Use secrets management tools to securely store and manage sensitive information like passwords, API keys, and certificates.</ul>|
 | **Use Monitoring and Logging Tools** | <ul>Use monitoring and logging tools to track the performance and security of containerized applications.</ul> |
 
-
-
 ## 4.4 Orchestration - Kubernetes
 
-Kubernetes is a popular container orchestration tool that automates the deployment, scaling, and management of containerized applications. Kubernetes provides a rich set of features for securing containerized applications. 
+Kubernetes is a popular container orchestration tool that automates the deployment, scaling, and management of containerized applications. Kubernetes provides a rich set of features for securing containerized applications.
 
 The benefits of Kubernetes include:
 
@@ -84,7 +77,6 @@ Although Kubernetes provides many benefits, it also introduces new security chal
 > **Note:** Where possible, it is recommended to use a managed Kubernetes service from a cloud provider, as they often provide additional security features and manage the underlying infrastructure for you.
 > This eliminates the need to manage the Control plane and ensures that the cluster is always up to date with the latest security patches.
 
-
 When managing your own Cluster, it is important to follow best practices for securing the cluster. Specific flags for hardening Can be found in the [CIS Kubernetes Benchmark](https://www.cisecurity.org/benchmark/kubernetes/). Open source tools to verify configuration and compliance to CIS Benchmark include and [kube-bench](https://github.com/aquasecurity/kube-bench) and [kubsec.io](https://kubesec.io/).
 
 Regardless of style (Managed or self-managed), high-level recommendations and best practices for securing Kubernetes include:
@@ -97,7 +89,5 @@ Regardless of style (Managed or self-managed), high-level recommendations and be
 | **Kubernetes Secrets** | <ul>Ensures that all sensitive information -- such as passwords, `Open Authorization (OAuth)` tokens and `Secure Shell (SSH)` keys -- are encrypted and made available to each Pod only when they are required for a particular task.</ul> |
 | **Logging and Telemetry** | <ul>Includes audit trail and use of application monitoring tools built for cloud-native environments.</ul> |
 | **Networking** | <ul><li>Use network policies to segment communication between containers or pods: for example to specify with whom a pods or endpoints can communicate.</li><li>Resources to help implement Kubernetes network policy include: <ul><li>[Kubernetes Network Policies feature](https://kubernetes.io/docs/concepts/services-networking/network-policies/)</li><li>[AWS - Limit pod traffic with Kubernetes network policies](https://docs.aws.amazon.com/eks/latest/userguide/cni-network-policy.html)</li><li>[Azure - Limit pod traffic with Kubernetes network policies](https://docs.microsoft.com/en-us/azure/aks/use-network-policies)</li><li>[GCP - Limit pod traffic with Kubernetes network policies](https://cloud.google.com/kubernetes-engine/docs/how-to/network-policy)</li></ul></ul> |
-
-
 
 Further details can be found in [kubernetes.io](kubernetes.io), and [NIST Special Publication 800-190 Application Container Security Guide](https://doi.org/10.6028/NIST.SP.800-190).

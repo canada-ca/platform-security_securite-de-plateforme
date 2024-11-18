@@ -4,10 +4,9 @@
 
 *Microservices* are established when a set of functional components work together to compose an application. While this approach improves flexibility and scalability for application development and simplifies functionality, it adds another layer of abstraction that must be secured.
 
-*Container* technology (OS virtualization) enables software to be deployed quickly and run predictably when moved from one environment to another. In modern deployments, containers are often orchestrated by a container orchestration tool, such as Kubernetes (K8s) or a cloud provider, to manage the lifecycle of the containers. 
+*Container* technology (OS virtualization) enables software to be deployed quickly and run predictably when moved from one environment to another. In modern deployments, containers are often orchestrated by a container orchestration tool, such as Kubernetes (K8s) or a cloud provider, to manage the lifecycle of the containers.
 
 *Microservices* are often deployed in *containers* to take advantage of the benefits of both technologies.
-
 
 This guidance provides recommendations to secure *containers* and *microservices* when deploying Government of Canada (GC) services. It highlights the controls, configuration and tools to secure GC workloads running in *containers* and orchestrators and recommendations for compliance verification.
 

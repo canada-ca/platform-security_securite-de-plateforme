@@ -28,12 +28,10 @@ container runtime and traditional VM based workload isolation.
 
 The following table lists the different considerations when it comes to workload isolation in containers and VMs.
 
-
 | Consideration | Description |
 | --- | --- |
 | **Hard Isolation** | Traditional VMs offer strong, "hard" isolation due to their separate kernels.|
 | **Soft Isolation** | Containers provide "soft" isolation using mechanisms like Kubernetes namespaces. |
-
 
 The most fundamental difference between containers and virtual machines (VMs) is related to the host, or kernel environment in which they run.
 Each VM runs its own guest OS and as such, has its own kernel. In contrast, a container shares the underlying operating system's kernel with all of the other containers on that host.
@@ -48,44 +46,35 @@ and 'OS' on the Containers side. Then, above that on the Containers side is a 'C
 On the VMs side, instead of the Container Engine, there is 'Guest OS' 1 to n, and then the rest of the diagram above that is the same as the one for Containers, with 'Bins/Lib' and 'App' 1 to n.](../media/image_10.png)
 _Figure 5-1 - VMs vs Containers_
 
-
-
 #### Hard Isolation
 
 Key points to consider when it comes to hard isolation:
-
 
 | Consideration | Description |
 | --- | --- |
 | **Strong Isolation** | VMs provide strong isolation by running separate guest OS and kernels, offering well-understood security realms.|
 | **Resource Sharing** | Containers share the host OS kernel, enabling faster startup, lower memory footprint, and efficient resource usage. |
 
-
 #### Soft Isolation
 
 Key points to consider when it comes to soft isolation:
-
 
 | Consideration | Description |
 | --- | --- |
 | **Namespace** | <ul>Kubernetes namespaces provide basic workload separation through resource quotas and user access boundaries.</ul> |
 | **Isolation** | <ul><li>Namespaces provide a level of isolation, but they are not as strong as VMs.</li><li>Namespaces do not isolate workloads on physical hosts; workloads in different namespaces can run on the same host.</li></ul> |
 
-
 #### Attack Surface
 
 The attack surface of a container is the sum of all the different points where an attacker could potentially exploit the container. The attack surface  includes the container image, the container runtime, the host OS, the container network, and the Kubernetes API server.
 
-
 Consider security implications of:
-
 
 | Consideration | Description |
 | --- | --- |
 | **Kubernetes Platform Architecture** | nodes, kubelet service, API service, etcd service, control plane. |
 | **Workload Organization** | Pods, containers, namespaces. |
 | **Ecosystem Services** | ingress, storage, certificate management, service mesh. |
-
 
 <a name="figure-5-2"></a>
 
@@ -103,7 +92,6 @@ Containers can have dependencies among themselves, dependencies to nodes, and re
 
 The following table is a list of considerations when it comes to workload scheduling and placement in Kubernetes.
 
-
 | Consideration | Description |
 | --- | --- |
 | **Taints and Tolerations** | <ul><li>Taints and tolerations are used to control which pods can be scheduled on which nodes.</li><li> Use taints and tolerations to prevent pods from running on unsuitable nodes (e.g., user workloads on master nodes).</li></ul>|
@@ -111,19 +99,16 @@ The following table is a list of considerations when it comes to workload schedu
 | **Node Affinity/Anti-Affinity** | <ul>Node affinity and anti-affinity allow you to specific nodes or ensure distribution for high availability.</ul> |
 | **Built-in vs Custom** | <ul>Utilize built-in taints or define custom taints based on node conditions like readiness, resource pressure, or schedulability. </ul>|
 
-
 ### Role-Based Access Control (RBAC)
 
 #### Kubernetes Cluster Authorization
 
 Access controls are implemented on the Kubernetes API layer (`kube-apiserver`). When an API request comes in, the authorization permissions will be checked to see whether the user has access to be able to execute this command.
 
-
 | Consideration | Description |
 | --- | --- |
 | **Role-Based Access Control (RBAC)** | <ul><li>A method of regulating access to computer or network resources based on the roles of individual users within an organization.</li><li>Implement access controls at the Kubernetes API layer to govern user permissions for actions and resources.</li></ul>|
 | **Roles and Binding** | <ul><li>A role is a set of permissions that define the actions that a user is allowed to perform.</li><li>`RoleBindings` grant those permissions to the users.</li><li>Utilize Roles and RoleBindings for namespace-specific access, and `ClusterRoles` and `ClusterRoleBindings` for cluster-wide access.</li></ul>|
-
 
 <a name="figure-5-3"></a>
 
@@ -143,7 +128,6 @@ Features of a service mesh include:
 | **Zero Trust** | <ul>Implement Zero Trust network principles with policy-based security controls.</ul> |
 | **Separate Planes** | <ul>Consider service meshes for features such as traffic shaping, resiliency, observability, and secure communication.</ul> |
 
-
 <a name="figure-5-4"></a>
 
 ![Figure 5-4](../media/image_9.png)
@@ -155,7 +139,6 @@ Access control policies evolve as the business requirements change -- tying the 
 
 The following table lists the considerations when it comes to access control and policy enforcement:
 
-
 | Consideration | Description |
 | --- | --- |
 | **Open Policy Agent (OPA)** | <ul><li>OPA is a general-purpose policy engine that can be used to enforce policies across the Kubernetes ecosystem.</li><li> Use OPA to externalize and enforce fine-grained access control policies across the Kubernetes ecosystem.</li></ul> |
@@ -163,9 +146,7 @@ The following table lists the considerations when it comes to access control and
 | **API Gateway** | <ul></li>API gateways can be used to enforce policies at the API gateway level.</li><li>Integrate OPA with API gateways for policy enforcement at the edge.</li></ul> |
 | **Cloud IAM** | <ul><li>Use cloud IAM to manage access to cloud resources and services when deploying microservices on cloud platforms.</li><li>Use service or machine accounts to authenticate and authorize services to access cloud resources.</ul> |
 
-
 Policy enforcement systems could be integrated with API gateways to enforce the policies at the API gateway level. The following figure illustrates the sequence of events that happens when an API gateway intercepts client requests to apply authorization policies using OPA.
-
 
 <a name="figure-5-5"></a>
 
@@ -176,13 +157,12 @@ _Figure 5-5 - API Gateway with OPA_
 
 In order to run containers securely, we aim to do the following:
 
-
 1. Use least privilege to carry out the task at hand.
 2. Enforce resource allocation
 3. Limit communication between applications, and to and from the outside world, to a defined and deterministic set of connections.
 
 ### Least-Privilege Security Settings
- 
+
 Least privilege is a security concept that requires that every module or program in a computer system be granted the least amount of privilege needed to fulfill its function. This helps to reduce the potential attack surface of the system.
 
 The following table lists the considerations when it comes to least-privilege security settings in containers:
@@ -192,25 +172,22 @@ The following table lists the considerations when it comes to least-privilege se
 | **Avoid Root** | Run containers as non-root users unless specific privileges are required (e.g., modifying the host system, binding to privileged ports) |
 | **Read-Only Root Filesystem** | Prevent attackers from writing executable files by setting the root filesystem as read-only, unless write access is essential. |
 | **Limit Host Volume Mounts** | Restrict the ability to mount sensitive host directories into containers to prevent unintended modifications. |
-| **Disable Privileged Access** | Set `privileged` and `allowPrivilegeEscalation` to ***false*** unless specifically required. |
+| **Disable Privileged Access** | Set `privileged` and `allowPrivilegeEscalation` to _**false**_ unless specifically required. |
 | **Restrict System Calls** | Use [`seccomp`](https://www.bing.com/ck/a?!&&p=9acbba49cc8936509ee03e13e8b9bf37593a0902f2fe56133188b3acf0f02e3cJmltdHM9MTczMTQ1NjAwMA&ptn=3&ver=2&hsh=4&fclid=048693a4-15f3-6fbd-0106-80d9147f6e25&psq=seccomp&u=a1aHR0cHM6Ly9rdWJlcm5ldGVzLmlvL2RvY3MvdHV0b3JpYWxzL3NlY3VyaXR5L3NlY2NvbXAv&ntb=1) profiles to limit system calls available within containers, minimizing potential attack vectors.|
-
 
 ### Resource Usage
 
 Containers have multiple dimensions at runtime, such as:
- - memory usage,
- - CPU usage, and
- - other resource consumption dimensions.
 
+- memory usage,
+- CPU usage, and
+- other resource consumption dimensions.
 
 The following table lists the considerations when it comes to resource usage in containers:
-
 
 | Consideration | Description |
 | --- | --- |
 | **Define the Required Resources** | Define and enforce resource requirements (CPU, memory) for each container to ensure predictable resource allocation and prevent resource starvation.|
-
 
 ### Network Policies
 
@@ -222,12 +199,10 @@ The following table lists the considerations when it comes to network policies i
 | **Set Limits** | Consider network policy limitations (pod port focus, service port changes, logging capabilities, FQDN support). |
 | **Default Allow-All Policy** | By default, Kubernetes has an allow-all policy, and does not restrict the ability for pods to communicate with each other. |
 
-
 ## 5.3 Securing Traffic
 
 Microservices developer should focus on the business functionality of a microservice, and the management of other concerns like security, observability, and resiliency should be handled by specialized components.
 The [`API Gateway`](https://microservices.io/patterns/apigateway.html) and [`Service Mesh`](#service-mesh) are two architectural patterns that help us achieve this goal.
-
 
 ### North-South Traffic
 
@@ -236,42 +211,36 @@ between the client/consumer applications and the APIs. To secure the
 north-south traffic, an API gateway is typically deployed at the edge of
 a network.
 
-
 | Consideration | Description |
 | --- | --- |
 | **North-South Traffic (Client-API Communication)** | <ul><li>Deploy API gateways at the network edge to secure and manage incoming requests to microservices.</li><li>Implement authentication and authorization using protocols like OAuth 2.0 to control access to resources.</li><li> Consider API gateways for features like rate limiting, request throttling, analytics, and API monetization</ul></li> |
 
-
 ### East-West Traffic
+
 East-West traffic indicates the inter-micro-service communications.
 
-
 Securing this type of traffic has three aspects:
-
 
 | Consideration | Description |
 | --- | --- |
 | **East-West Traffic (Inter-Microservice Communication)** | <ul><li>Implement mutual TLS (mTLS) to secure communication between microservices.</li><li>Use JWT tokens for for request authentication to verify end-user identities and claims.</li><li>Leverage [service meshes](#service-mesh) for decoupling security, observability, routing control, and resiliency from microservices implementation.</ul></li> |
 
-
 ### Event-Driven Systems
+
 Event-driven systems rely on data streams and the propagation of events to trigger actions. These systems are composed of event producers, event consumers, and event brokers.
 
 The following table lists the considerations when it comes to securing event-driven systems:
 
-
 | Consideration | Description |
 | --- | --- |
 | **Message broker** | Secure event traffic between microservices using message brokers like <ul><li>[Kafka](https://kafka.apache.org/)</li><li>[Google Pub/Sub](https://cloud.google.com/pubsub)</li><li>[Azure Service Bus](https://azure.microsoft.com/en-ca/services/service-bus/)</li><li>[AWS SNS](https://aws.amazon.com/sns/)</li></ul> |
-| **Transport Layer Security** | Use TLS/mTLS to encrypt data in transit between microservices and the message broker.| 
-| **Control access** | Use `IAM` to control which microservices are permitted to connect to the message broker and to authenticate the clients connecting to it.| 
+| **Transport Layer Security** | Use TLS/mTLS to encrypt data in transit between microservices and the message broker.|
+| **Control access** | Use `IAM` to control which microservices are permitted to connect to the message broker and to authenticate the clients connecting to it.|
 | **Access Control Lists (ACLs)**| ACLs permit or deny various micro-services performing different types of actions on the message broker resources such as topics and queues. |
-
 
 ## 5.4 Secure Coding Practices
 
 Secure coding practices are a set of guidelines and best practices that help developers write secure code. The Government of Canada provides guidance on secure coding practices in the [Secure Coding Practices Guide - on GCPedia](https://www.gcpedia.gc.ca/gcwiki/images/0/0c/Guidance_for_Secure_Application_Development.pdf), which are base in large part on the [OWASP Top 10](https://owasp.org/Top10/).
-
 
 In addition to the `Secure Coding Practices Guide`, the following list should be considered when developing microservices:
 
@@ -279,14 +248,13 @@ In addition to the `Secure Coding Practices Guide`, the following list should be
 | --- | --- |
 | **Crypto Libraries** | <ul>Don't write your own crypto code! Use well-known and tested libraries.</ul> |
 | **Data in Transit** | <ul><li>Use SSL and OAuth tokens to protect your APIs and the data in transit.</li><li>Use mutual TLS (mTLS) for secure communication between microservices.</ul> |
-| **Protect Production Branch** | <ul><li>Only verified commits should be merged into the production branch.</li><li>Use *branch protection rules* to prevent unauthorized changes to the production branch.</ul> |
+| **Protect Production Branch** | <ul><li>Only verified commits should be merged into the production branch.</li><li>Use _branch protection rules_ to prevent unauthorized changes to the production branch.</ul> |
 | **Secrets Management** | <ul><li>Never hard-code secrets in your code. </li><li>Use a secret management tool to store and retrieve secrets.</li></ul> |
 | **Input Validation** | <ul>Always validate input data to prevent injection attacks.</ul> |
 | **Error Handling** | <ul>Implement proper error handling to prevent information leakage.</ul> |
 | **Logging** | <ul>Implement proper logging to help with debugging and auditing.</ul> |
 | **Dependency Management** | <ul>Keep your dependencies up to date to avoid vulnerabilities.</ul> |
 | **Secure Configuration** | <ul>Ensure that your configuration is secure and does not expose sensitive information.</ul> |
-
 
 ## 5.5 Architecting Your Application for Cloud
 
@@ -329,12 +297,11 @@ The following table lists the considerations when it comes to observability in m
 
 | Consideration | Description |
 | --- | --- |
-| **Health Check and Auto Healing** | <ul><li>Expose APIs for the runtime environment to observe the container health and act accordingly.</li><li>Use *liveness* and *readiness* probes to make a service more robust and resilient.</ul> |
+| **Health Check and Auto Healing** | <ul><li>Expose APIs for the runtime environment to observe the container health and act accordingly.</li><li>Use _liveness_ and _readiness_ probes to make a service more robust and resilient.</ul> |
 | **Logging** | <ul><li>Write logs to standard output and standard error streams.</li><li>Use a separate storage and lifecycle for logs.</ul> |
 | **Monitoring and Custom Metrics** | <ul><li>Use observability metrics to determine if the production deployment is functioning correctly.</li><li>Monitor application health, performance, and availability.</ul> |
 | **Tracing** | <ul><li>Use tracing to view the latency encountered on every instrumented application or service.</li><li>Implement a trace that represents the life of a request in a distributed system.</ul> |
 | **Anomaly Detection** | <ul><li>Use AI-supported tools to detect anomalies in the system.</li><li>Use anomaly detection to identify performance issues and security threats.</ul> |
-
 
 ## 5.8 Secrets Management
 
@@ -350,8 +317,6 @@ The following table lists the considerations when it comes to secrets management
 | **Audit** | <ul>Log all access to secrets.</ul> |
 | **Secret Rotation** | <ul>Rotate secrets frequently to reduce the risk of compromise.</ul> |
 
-
-
 ### Secret Management Tools
 
 Secret management solutions fall into two broad categories:
@@ -360,7 +325,6 @@ Secret management solutions fall into two broad categories:
 | --- | --- |
 | **Cloud Provider Tools** | <ul><li>[AWS Secrets Manager](https://aws.amazon.com/secrets-manager/)</li><li>[Google Cloud Platform KMS](https://cloud.google.com/kms/)</li><li>[Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)</ul> |
 | **Open Source Tools** | <ul><li>[Hashicorp Vault](https://www.vaultproject.io/)</li><li>[BitWarden Secrets Manager](https://bitwarden.com/go/secrets-manager/)</li></ul> |
-
 
 ## 5.9 Continuous Integration/Continuous Deployment (CI/CD)
 
@@ -373,10 +337,9 @@ Your CI/CD pipeline plays a pivotal role in securing your microservices. The fol
 | **Integrate Security Testing in Pipeline** | Integrate security testing into your CI/CD pipeline to identify security flaws before they can be exploited.|
 | **Code analysis and scanning**| Use static code analysis, dynamic analysis, and third-party dependency scanning to identify vulnerabilities. |
 
-
 ## 5.10 Infrastructure as Code (IaC)
 
-Infrastructure as Code (IaC) is the process of managing and provisioning compute infrastructure through machine-readable definition files rather than physically configuring the hardware or by using interactive configuration tools. 
+Infrastructure as Code (IaC) is the process of managing and provisioning compute infrastructure through machine-readable definition files rather than physically configuring the hardware or by using interactive configuration tools.
 
 The following table lists the considerations when it comes to IaC security:
 
