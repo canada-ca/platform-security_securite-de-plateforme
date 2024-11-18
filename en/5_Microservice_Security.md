@@ -150,7 +150,7 @@ Policy enforcement systems could be integrated with API gateways to enforce the 
 
 <a name="figure-5-5"></a>
 
-![](../media/image_7.png)
+![A diagram illustrating a microservice architecture with an API gateway and OPA engine for authorization. It shows the flow of a client request through the gateway, which sends an authorization request to the OPA engine. The OPA engine evaluates policies and sends an allow/deny response back to the gateway. The gateway then either terminates the request or forwards it to the microservice.](../media/image_7.png)
 _Figure 5-5 - API Gateway with OPA_
 
 ## 5.2 Securing Container Runtime
@@ -286,7 +286,7 @@ The following figure illustrates the system components, activities, and artifact
 
 <a name="figure-5-6"></a>
 
-![](../media/image_11.png)
+![A diagram illustrating a container security pipeline. It shows the flow of activities and artifacts between system components: CI/CD services, container registry, and various security tools. The pipeline includes stages for building, scanning, patching, storing, and signing container images, as well as generating Software Bill of Materials (SBOMs).](../media/image_11.png)
 _Figure 5-6 - Securing Container Images_
 
 ## 5.7 Observability
