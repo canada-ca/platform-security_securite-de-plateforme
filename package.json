@@ -4,6 +4,7 @@
     "lint": "markdownlint -i node_modules \"**/*.md\"",
     "test": "npm run lint && npm run link-check"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/canada-ca/template-gabarit"
