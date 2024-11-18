@@ -1,0 +1,41 @@
+---
+---
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2em;
+}
+
+h1, h2, h3 {
+  margin: 1em 0 2em 0 !important;
+}
+
+tbody tr:first-child td {
+  padding-top: 0.8em !important;
+}
+
+th {
+  border-bottom: solid #ddd .18em;
+  padding: 0.3em 0.8em 0.3em 0.2em !important;
+}
+
+td {
+  padding: 0 0.8em 0.6em 0 !important;
+}
+
+td em, td b, td strong {
+  color: #037A8C;
+  background-color: #f9f2f4;
+  border-radius: 0.2em;
+  padding: 2px 4px;
+  font-weight: normal;
+}
+
+p {
+  margin: 1em 0 !important;
+}
+
+img {
+  display: block;
+  clear: both;
+}
