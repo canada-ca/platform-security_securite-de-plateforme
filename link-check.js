@@ -1,24 +1,21 @@
 #!/usr/bin/env node
 
 'use strict';
+import fs from 'fs';
+import {sync}  from 'glob';
+import path from 'path';
+import chalk from 'chalk';
 
-var markdownLinkCheck = require('markdown-link-check');
-var fs = require("fs");
-var glob = require("glob");
-var path = require("path");
-var chalk = require("chalk");
+import markdownLinkCheck from 'markdown-link-check';
 
+const files = sync("**/*.md", {ignore: ["node_modules/**/*.md"]})
 
-var files = glob.sync("**/*.md", {ignore: ["node_modules/**/*.md"]})
-
-var config = JSON.parse(fs.readFileSync(".markdown-link-check.json"));
+const config = JSON.parse(fs.readFileSync(".markdown-link-check.json"));
 config.timeout = '30s'
 
-var opts = JSON.parse(fs.readFileSync(".markdown-link-check.json"));
-
 files.forEach(function(file) {
-  var markdown = fs.readFileSync(file).toString();
-  let opts = Object.assign({}, config);
+  const markdown = fs.readFileSync(file).toString();
+  const opts = Object.assign({}, config);
 
   opts.baseUrl = path.dirname(path.resolve(file)) + '/';
 

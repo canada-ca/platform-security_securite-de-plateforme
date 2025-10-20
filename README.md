@@ -2,9 +2,13 @@
 
 ([Français](#gabarit-pour-dépôts-de-code-source-ouvert-du-gouvernement-du-canada))
 
-With the introduction of cloud services and the adoption of “continuous deployment” of software services, the movement of applications from one environment to another and within an environment is required to be agile and predictable. Container technology (OS virtualization) enables software to deploy quickly and run predictably when moved from one environment to another. Further, microservices are established when a set of containers work together to compose an application. While this approach improves flexibility and scalability for application development and simplifies functionality, it adds another layer of abstraction that must be secured.
+*Microservices* are established when a set of functional components work together to compose an application. While this approach improves flexibility and scalability for application development and simplifies functionality, it adds another layer of abstraction that must be secured.
 
-This guidance provides recommendations to secure containers and microservices when deploying Government of Canada (GC) services. It highlights the controls, configuration and tools to secure GC workloads running in containers and orchestrators and recommendations for compliance verification.
+*Container* technology (OS virtualization) enables software to be deployed quickly and run predictably when moved from one environment to another. In modern deployments, containers are often orchestrated by a container orchestration tool, such as Kubernetes (K8s) or a cloud provider, to manage the lifecycle of the containers.
+
+*Microservices* are often deployed in *containers* to take advantage of the benefits of both technologies.
+
+This guidance provides recommendations to secure *containers* and *microservices* when deploying Government of Canada (GC) services. It highlights the controls, configuration and tools to secure GC workloads running in *containers* and orchestrators and recommendations for compliance verification.
 
 ## Table of Contents
 
@@ -19,14 +23,14 @@ This guidance provides recommendations to secure containers and microservices wh
   - [2.3 Containers](en/2_Context.md/#23-containers)
   - [2.4 Container Security](en/2_Context.md/#24-container-security)
   - [2.5 Microservices](en/2_Context.md/#25-microservices)
-    - [2.5.1 The Ten Commandments of Microservices](en/2_Context.md/#251-the-ten-commandments-of-microservices)
-    - [2.5.2 Service Mesh](en/2_Context.md/#252-service-mesh)
-  - [2.6 Functions as a Service](en/2_Context.md/#26-functions-as-a-service)
+  - [2.6 Orchestration](en/2_Context.md/#26-orchestration)
+    - [2.6.1 Service Mesh](en/2_Context.md/#261-service-mesh)
+  - [2.7 Functions as a Service](en/2_Context.md/#26-functions-as-a-service)
 - [3. Threat Environment](en/3_Threat-Environment.md)
 - [4. Implementation Recommendations](en/4_Implementation-Recommendations.md)
   - [4.1 Host Recommendations](en/4_Implementation-Recommendations.md/#41-host-recommendations)
   - [4.2 Image Builds](en/4_Implementation-Recommendations.md/#42-image-builds)
-  - [4.3 Container Security Brokers](en/4_Implementation-Recommendations.md/#43-container-security-brokers)
+  - [4.3 Container Deployment Security](en/4_Implementation-Recommendations.md/#43-container-deployment-security)
   - [4.4 Orchestration - Kubernetes](en/4_Implementation-Recommendations.md/#44-orchestration---kubernetes)
 - [5. Additional Microservices and Container Security Guidelines](en/5_Microservice_Security.md)
   - [5.1 Securing Platform](en/5_Microservice_Security.md#51-securing-platform)
@@ -39,51 +43,49 @@ This guidance provides recommendations to secure containers and microservices wh
   - [5.8 Secrets Management](en/5_Microservice_Security.md#58-secrets-management)
   - [5.9 Continuous Integration/Continuous Deployment (CI/CD)](en/5_Microservice_Security.md#59-continuous-integrationcontinuous-deployment-cicd)
   - [5.10 Infrastructure as Code](en/5_Microservice_Security.md#510-infrastructure-as-code)
-- [6. References](en/6_References.md)
-
-## List of Tables
-
-- [Table 2‑1 Virtualization and Container Quality Attributes](en/2_Context.md/#23-containers)
 
 ## List of Figures
 
-- [Figure 2‑1 Monolithic versus Microservice \[1\]](en/2_Context.md/#21-definitions)
-- [Figure 2‑2 High-level overview of VM's, containers, and serverless \[3\]](en/2_Context.md/#21-definitions)
-- [Figure 2‑3 Shared Responsibility Model with Containers](en/2_Context.md/#21-definitions)
-- [Figure 2‑4 Container Technologies](en/2_Context.md/#23-containers)
-- [Figure ‎2‑5 Microservices Architecture (MSA)](en/2_Context.md/#25-microservices)
-- [Figure ‎2‑6 Example service mesh (CNCF Project Istio) \[12\]](en/2_Context.md/#252-service-mesh)
+- [Figure 2‑1 Monolithic versus Microservice](en/2_Context.md#figure-2-1)
+- [Figure 2‑2 High-level overview of VMs, containers, and serverless](en/2_Context.md#figure-2-2)
+- [Figure 2‑3 Shared Responsibility Model with Containers](en/2_Context.md#figure-2-3)
+- [Figure 2‑4 Container Technologies](en/2_Context.md#figure-2-4)
+- [Figure 2‑5 Microservices Architecture (MSA)](en/2_Context.md#figure-2-5)
+- [Figure 5-1 VMs vs Containers](en/5_Microservice_Security.md#figure-5-1)
+- [Figure 5-2 Kubernetes Attack Surface](en/5_Microservice_Security.md#figure-5-2)
+- [Figure 5-3 RBAC in Kubernetes](en/5_Microservice_Security.md#figure-5-3)
+- [Figure 5-4 Service Mesh](en/5_Microservice_Security.md#figure-5-4)
+- [Figure 5-5 API Gateway with OPA](en/5_Microservice_Security.md#figure-5-5)
+- [Figure 5-6 Securing Container Images](en/5_Microservice_Security.md#figure-5-6)
 
 ## List of Abbreviations and Acronyms
 
 | Abbreviation | Definition                                         |
 | ------------ | -------------------------------------------------- |
-| CIRT         | Computer Incident Response Team                    |
-| CONOPS       | Concept of Operations                              |
-| CSE          | Communications Security Establishment              |
-| CS EMP       | Cyber Security Event Management Plan               |
+| CaaS         | Containers as a service                            |
 | CSP          | Cloud Service Provider                             |
-| FedRAMP      | Federal Risk and Authorization Management Program  |
+| FaaS         | Functions as a service                             |
 | GC           | Government of Canada                               |
-| GSRM         | Government of Canada Strategic Reference Model     |
 | IaaS         | Infrastructure as a Service                        |
-| IPC          | Information Protection Centre                      |
+| IaC          | Infrastructure as code                             |
+| IDS          | Intrusion Detection System                         |
 | IT           | Information Technology                             |
-| ITSG         | Information Technology Security Guidance           |
-| LAN          | Local Area Network                                 |
+| JSON         | JavaScript Object Notation                         |
+| JWT          | JSON Web Tokens                                    |
+| K8s          | Kubernetes                                         |
+| MSA          | Microservices Architecture                         |
+| mTLS         | Mutual Transport Layer Security                    |
 | NIST         | National Institute of Standard and Technology      |
-| PAA          | Program Alignment Architecture                     |
+| OAuth        | Open Authentication                                |
+| OS           | Operating system                                   |
 | PaaS         | Platform as a Service                              |
 | PBMM         | Protected B, Medium Integrity, Medium Availability |
-| PIA          | Privacy Impact Assessment                          |
-| PoAM         | Plan of Actions and Milestones                     |
-| RACI         | Responsible, Accountable, Consulted, Informed      |
+| RBAC         | Role-base Access Control                           |
 | SaaS         | Software as a Service                              |
-| SDLC         | System Development Lifecycle                       |
-| SLA          | Service Level Agreement                            |
-| SSC          | Shared Services Canada                             |
+| SSH          | Secure Shell                                       |
 | TBS          | Treasury Board of Canada Secretariat               |
-| ULL          | Unclassified, Low Integrity, Low Availability      |
+| TLS          | Transport Layer Security                           |
+| VM           | Virtual Machine                                    |
 
 ### How to Contribute
 
